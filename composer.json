@@ -1,0 +1,30 @@
+{
+    "name": "clnqcdrs/profile",
+    "description": "Common Profile Information",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nasrul Hazim",
+            "email": "nasrulhazim.m@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CLNQCDRS\\Profile\\": "src/"
+        },
+        "classmap": [
+            "src/database/seeds",
+            "src/database/factories"
+        ],
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "require": {
+        "clnqcdrs/blueprint-macro": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "orchestra/testbench": "~3.0"
+    }
+}
