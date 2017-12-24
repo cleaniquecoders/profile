@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3072486a9c52905348885347c442df99",
+    "content-hash": "dc0e0b6197b0d177d014805bd43c4bac",
     "packages": [
         {
             "name": "clnqcdrs/blueprint-macro",
