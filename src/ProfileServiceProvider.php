@@ -24,6 +24,9 @@ class ProfileServiceProvider extends ServiceProvider
          */
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
         $this->publishes([
+            __DIR__ . '/database/factories' => database_path('factories/'),
+        ], $this->package_tag . '-factories');
+        $this->publishes([
             __DIR__ . '/database/migrations' => database_path('migrations/'),
         ], $this->package_tag . '-migrations');
     }

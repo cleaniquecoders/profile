@@ -16,6 +16,12 @@ In case you want to modify the migration file:
 $ php artisan vendor:publish --tag=profile-migrations
 ```
 
+Run the following to publish factory files:
+
+```
+$ php artisan vendor:publish --tag=profile-factories
+```
+
 Else, you can just run the migration:
 
 ```
