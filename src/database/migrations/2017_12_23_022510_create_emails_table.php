@@ -18,7 +18,7 @@ class CreateEmailsTable extends Migration
             $table->hashslug();
             $table->unsignedInteger('emailable_id');
             $table->string('emailable_type');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->boolean('is_default')->default(false);
             $table->standardTime();
         });

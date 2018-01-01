@@ -19,8 +19,8 @@ class CreateAddressesTable extends Migration
             $table->addForeign('country_id', 'countries');
             $table->unsignedInteger('addressable_id');
             $table->string('addressable_type');
-            $table->text('primary');
-            $table->text('secondary');
+            $table->text('primary')->nullable();
+            $table->text('secondary')->nullable();
             $table->string('postcode');
             $table->string('city');
             $table->string('state');
