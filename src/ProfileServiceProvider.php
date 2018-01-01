@@ -29,6 +29,15 @@ class ProfileServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/database/migrations' => database_path('migrations/'),
         ], $this->package_tag . '-migrations');
+
+        /**
+         * Commands
+         */
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \CLNQCDRS\Profile\Console\Commands\SeedProfileCommand::class,
+            ]);
+        }
     }
 
     /**
