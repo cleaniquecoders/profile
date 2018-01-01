@@ -1,6 +1,8 @@
 <?php
 
-class TestMigrationCase extends Orchestra\Testbench\TestCase
+namespace CLNQCDRS\Profile\Tests;
+
+class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
      * Setup the test environment.
@@ -12,8 +14,7 @@ class TestMigrationCase extends Orchestra\Testbench\TestCase
         $this->loadLaravelMigrations(['--database' => 'testbench']);
 
         $this->artisan('migrate', ['--database' => 'testbench']);
-        $this->artisan('db:seed', ['--class' => 'CountrySeeder']);
-        $this->artisan('db:seed', ['--class' => 'PhoneTypeSeeder']);
+        $this->artisan('profile:seed');
     }
 
     protected function getPackageProviders($app)
@@ -39,18 +40,5 @@ class TestMigrationCase extends Orchestra\Testbench\TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-    }
-
-    /**
-     * Test running migration.
-     *
-     * @test
-     */
-    public function testRunningMigration()
-    {
-        $countries = \DB::table('countries')->count();
-        $this->assertEquals(241, $countries);
-        $phone_types = \DB::table('phone_types')->count();
-        $this->assertEquals(4, $phone_types);
     }
 }
