@@ -28,6 +28,12 @@ Else, you can just run the migration:
 $ php artisan migrate
 ```
 
+Then seed the Country and Phone Types data with:
+
+```
+$ php artisan profile:seed
+```
+
 ### Available Polymorph Traits
 
 User Cases: 
