@@ -16,14 +16,14 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->hashslug();
-            $table->addForeign('country_id', 'countries');
+            $table->addNullableForeign('country_id', 'countries');
             $table->unsignedInteger('addressable_id');
             $table->string('addressable_type');
             $table->text('primary')->nullable();
             $table->text('secondary')->nullable();
-            $table->string('postcode');
-            $table->string('city');
-            $table->string('state');
+            $table->string('postcode')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
             $table->standardTime();
 
             $table->referenceOn('country_id', 'countries');
