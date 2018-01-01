@@ -20,6 +20,11 @@
             "src/Support/helpers.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "CLNQCDRS\\Profile\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "clnqcdrs/blueprint-macro": "^1.0",
         "illuminate/support": "^5.5",
