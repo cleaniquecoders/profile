@@ -8,22 +8,25 @@
     "packages": [
         {
             "name": "clnqcdrs/blueprint-macro",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleaniquecoders/blueprint-macro.git",
-                "reference": "59936d7d7a23ec6a0df6e10bd33c3fc462d734ae"
+                "reference": "74681aa3923db97ed27136ab3a4b786902088cec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleaniquecoders/blueprint-macro/zipball/59936d7d7a23ec6a0df6e10bd33c3fc462d734ae",
-                "reference": "59936d7d7a23ec6a0df6e10bd33c3fc462d734ae",
+                "url": "https://api.github.com/repos/cleaniquecoders/blueprint-macro/zipball/74681aa3923db97ed27136ab3a4b786902088cec",
+                "reference": "74681aa3923db97ed27136ab3a4b786902088cec",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^5.5"
+                "illuminate/auth": "^5.5",
+                "illuminate/database": "^5.5",
+                "illuminate/support": "^5.5"
             },
             "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.4.4",
                 "orchestra/testbench": "~3.0",
                 "phpunit/phpunit": "^6.5"
             },
@@ -44,7 +47,7 @@
                 }
             ],
             "description": "Laravel Blueprint Macro",
-            "time": "2017-12-24T18:46:47+00:00"
+            "time": "2017-12-26T05:18:25+00:00"
         },
         {
             "name": "doctrine/inflector",
