@@ -1,10 +1,10 @@
 <?php
 
-namespace CLNQCDRS\Profile\Traits;
+namespace CleaniqueCoders\Profile\Traits;
 
-use CLNQCDRS\Profile\Traits\Morphs\Addressable;
-use CLNQCDRS\Profile\Traits\Morphs\Emailable;
-use CLNQCDRS\Profile\Traits\Morphs\Phoneable;
+use CleaniqueCoders\Profile\Traits\Morphs\Addressable;
+use CleaniqueCoders\Profile\Traits\Morphs\Emailable;
+use CleaniqueCoders\Profile\Traits\Morphs\Phoneable;
 
 /**
  * HasProfile Trait

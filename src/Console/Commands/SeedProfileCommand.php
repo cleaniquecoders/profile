@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Console\Commands;
+namespace CleaniqueCoders\Profile\Console\Commands;
 
 use Illuminate\Console\Command;
 

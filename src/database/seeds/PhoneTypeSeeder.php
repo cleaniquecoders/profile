@@ -20,7 +20,7 @@ class PhoneTypeSeeder extends Seeder
         ];
 
         foreach ($data as $datum) {
-            \CLNQCDRS\Profile\Models\PhoneType::create([
+            \CleaniqueCoders\Profile\Models\PhoneType::create([
                 'name'  => $datum,
                 'label' => Str::slug($datum, '-'),
             ]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Tests;
+namespace CleaniqueCoders\Profile\Tests;
 
 class PhoneTypeTest extends TestCase
 {

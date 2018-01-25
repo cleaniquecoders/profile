@@ -257,7 +257,7 @@ class CountrySeeder extends Seeder
         ];
 
         foreach ($countries as $code => $name) {
-            \CLNQCDRS\Profile\Models\Country::create([
+            \CleaniqueCoders\Profile\Models\Country::create([
                 'code'  => $code,
                 'name'  => $name,
                 'label' => Str::slug($name, '-'),

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile;
+namespace CleaniqueCoders\Profile;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -35,7 +35,7 @@ class ProfileServiceProvider extends ServiceProvider
          */
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \CLNQCDRS\Profile\Console\Commands\SeedProfileCommand::class,
+                \CleaniqueCoders\Profile\Console\Commands\SeedProfileCommand::class,
             ]);
         }
     }

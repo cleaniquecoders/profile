@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Traits\Morphs;
+namespace CleaniqueCoders\Profile\Traits\Morphs;
 
 /**
  * Addressable Trait
@@ -12,6 +12,6 @@ trait Addressable
      */
     public function addresses()
     {
-        return $this->morphMany(\CLNQCDRS\Profile\Models\Address::class, 'addressable');
+        return $this->morphMany(\CleaniqueCoders\Profile\Models\Address::class, 'addressable');
     }
 }

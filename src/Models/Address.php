@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Models;
+namespace CleaniqueCoders\Profile\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,7 @@ class Address extends Model
 
     /**
      * Get Country
-     * @return \CLNQCDRS\Profile\Models\Country
+     * @return \CleaniqueCoders\Profile\Models\Country
      */
     public function country()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Traits\Morphs;
+namespace CleaniqueCoders\Profile\Traits\Morphs;
 
 /**
  * Emailable Trait
@@ -12,6 +12,6 @@ trait Emailable
      */
     public function emails()
     {
-        return $this->morphMany(\CLNQCDRS\Profile\Models\Email::class, 'emailable');
+        return $this->morphMany(\CleaniqueCoders\Profile\Models\Email::class, 'emailable');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Models;
+namespace CleaniqueCoders\Profile\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

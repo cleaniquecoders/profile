@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\CLNQCDRS\Profile\Models\Address::class, function (Faker $faker) {
+$factory->define(\CleaniqueCoders\Profile\Models\Address::class, function (Faker $faker) {
     return [
         'country_id' => $faker->randomElement(range(1, 200)),
         'primary'    => $faker->streetName,

@@ -1,6 +1,6 @@
 <?php
 
-namespace CLNQCDRS\Profile\Traits\Morphs;
+namespace CleaniqueCoders\Profile\Traits\Morphs;
 
 /**
  * Phoneable Trait
@@ -12,6 +12,6 @@ trait Phoneable
      */
     public function phones()
     {
-        return $this->morphMany(\CLNQCDRS\Profile\Models\Phone::class, 'phoneable');
+        return $this->morphMany(\CleaniqueCoders\Profile\Models\Phone::class, 'phoneable');
     }
 }

@@ -1,14 +1,20 @@
 ## About Your Package
 
-Tell people about your package
+[![Build Status](https://travis-ci.org/cleaniquecoders/profile.svg?branch=master)](https://travis-ci.org/cleaniquecoders/profile) [![Latest Stable Version](https://poser.pugx.org/cleaniquecoders/profile/version)](https://packagist.org/packages/cleaniquecoders/profile) [![Total Downloads](https://poser.pugx.org/cleaniquecoders/profile/downloads)](https://packagist.org/packages/cleaniquecoders/profile) [![License](https://poser.pugx.org/cleaniquecoders/profile/license)](https://packagist.org/packages/cleaniquecoders/profile)
 
 ## Installation
 
+1. In order to install Profile in your Laravel project:
+
 ```
-$ composer require clnqcdrs/profile 
+$ composer require cleaniquecoders/profile
 ```
 
-## Usage
+2. Then in your `config/app.php` add the following to the `providers` key:
+
+```php
+\CleaniqueCoders\Profile\ProfileServiceProvider::class,
+```
 
 In case you want to modify the migration file:
 
@@ -46,18 +52,20 @@ This lead us to use Polymorph to tackle the issue of similarity in data stored.
 #### Setup
 
 ```php
-use CLNQCDRS\Profile\Traits\HasProfile;
+
+use CleaniqueCoders\Profile\Traits\HasProfile;
 
 class User extends Authenticatable 
 {
 	use HasProfile;
+}
 ```
 
 `HasProfile` trait consist of:
 
-1. `CLNQCDRS\Profile\Traits\Morphs\Addressable`
-2. `CLNQCDRS\Profile\Traits\Morphs\Emailable`
-3. `CLNQCDRS\Profile\Traits\Morphs\Phoneable`
+1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
+2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
+3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
 
 #### Usage
 
