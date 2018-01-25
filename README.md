@@ -1,6 +1,6 @@
 ## About Your Package
 
-[![Build Status](https://travis-ci.org/cleaniquecoders/profile.svg?branch=master)](https://travis-ci.org/cleaniquecoders/profile)
+[![Build Status](https://travis-ci.org/cleaniquecoders/profile.svg?branch=master)](https://travis-ci.org/cleaniquecoders/profile) [![Latest Stable Version](https://poser.pugx.org/cleaniquecoders/profile/v/stable)](https://packagist.org/packages/cleaniquecoders/profile) [![Total Downloads](https://poser.pugx.org/cleaniquecoders/profile/downloads)](https://packagist.org/packages/cleaniquecoders/profile) [![License](https://poser.pugx.org/cleaniquecoders/profile/license)](https://packagist.org/packages/cleaniquecoders/profile)
 
 ## Installation
 
