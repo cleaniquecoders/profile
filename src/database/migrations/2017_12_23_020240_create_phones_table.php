@@ -20,6 +20,7 @@ class CreatePhonesTable extends Migration
             $table->unsignedInteger('phoneable_id');
             $table->string('phoneable_type');
             $table->string('phone_number')->nullable();
+            $table->boolean('is_default')->default(false);
             $table->standardTime();
 
             $table->referenceOn('phone_type_id', 'phone_types');

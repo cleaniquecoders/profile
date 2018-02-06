@@ -24,6 +24,7 @@ class CreateAddressesTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
+            $table->boolean('is_default')->default(false);
             $table->standardTime();
 
             $table->referenceOn('country_id', 'countries');
