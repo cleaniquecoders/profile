@@ -44,8 +44,8 @@ $ php artisan profile:seed
 
 User Cases: 
 
-1. A company has addresses, phone numbers and emails.
-2. An employee has addresses, phone numbers and emails.
+1. A company has addresses, phone numbers, emails and websites.
+2. An employee has addresses, phone numbers, emails and websites.
 
 This lead us to use Polymorph to tackle the issue of similarity in data stored.
 
@@ -66,13 +66,26 @@ class User extends Authenticatable
 1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
 2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
 3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
+4. `CleaniqueCoders\Profile\Traits\Morphs\Websiteable`
 
 #### Usage
 
+**Create a record for each profile**
+
 ```php
-$user->addresses()->create([...])
-$user->emails()->create([...])
-$user->phones()->create([...])
+$user->addresses()->create([...]);
+$user->emails()->create([...]);
+$user->phones()->create([...]);
+$user->websites()->create([...]);
+```
+
+**Get all records**
+
+```php
+$user->addresses;
+$user->emails;
+$user->phones;
+$user->websites;
 ```
 
 ## License
