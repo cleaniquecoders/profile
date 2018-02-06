@@ -2,8 +2,12 @@
 
 namespace CleaniqueCoders\Profile\Tests;
 
+use CleaniqueCoders\Profile\Tests\Stubs\User;
+
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    public $user;
+
     /**
      * Setup the test environment.
      */
@@ -15,6 +19,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->artisan('migrate', ['--database' => 'testbench']);
         $this->artisan('profile:seed');
+        $this->user           = new User();
+        $this->user->name     = 'Cleanique Coders';
+        $this->user->email    = 'test@cleaniquecoders.com';
+        $this->user->password = bcrypt('password');
+        $this->user->save();
     }
 
     protected function getPackageProviders($app)
