@@ -8,8 +8,6 @@ class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -24,7 +22,7 @@ class CreateAddressesTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
-            $table->boolean('is_default')->default(false);
+            $table->boolean('is_default')->default(true);
             $table->standardTime();
 
             $table->referenceOn('country_id', 'countries');
@@ -33,8 +31,6 @@ class CreateAddressesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -7,19 +7,18 @@ use Illuminate\Support\ServiceProvider;
 class ProfileServiceProvider extends ServiceProvider
 {
     /**
-     * Package Tag Name
+     * Package Tag Name.
+     *
      * @var string
      */
     protected $package_tag = 'profile';
 
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
     public function boot()
     {
-        /**
+        /*
          * Migrations
          */
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
@@ -30,7 +29,7 @@ class ProfileServiceProvider extends ServiceProvider
             __DIR__ . '/database/migrations' => database_path('migrations/'),
         ], $this->package_tag . '-migrations');
 
-        /**
+        /*
          * Commands
          */
         if ($this->app->runningInConsole()) {
@@ -42,11 +41,8 @@ class ProfileServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register()
     {
-        //
     }
 }

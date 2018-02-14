@@ -3,7 +3,7 @@
 namespace CleaniqueCoders\Profile\Traits\Morphs;
 
 /**
- * Emailable Trait
+ * Emailable Trait.
  */
 trait Emailable
 {

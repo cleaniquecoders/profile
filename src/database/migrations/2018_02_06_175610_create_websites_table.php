@@ -8,8 +8,6 @@ class CreateWebsitesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -20,15 +18,13 @@ class CreateWebsitesTable extends Migration
             $table->string('websiteable_type');
             $table->string('name')->nullable();
             $table->string('url')->nullable();
-            $table->boolean('is_default')->default(false);
+            $table->boolean('is_default')->default(true);
             $table->standardTime();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

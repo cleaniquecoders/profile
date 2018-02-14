@@ -3,7 +3,7 @@
 namespace CleaniqueCoders\Profile\Traits\Morphs;
 
 /**
- * Phoneable Trait
+ * Phoneable Trait.
  */
 trait Phoneable
 {

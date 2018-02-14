@@ -8,7 +8,7 @@ use CleaniqueCoders\Profile\Traits\Morphs\Phoneable;
 use CleaniqueCoders\Profile\Traits\Morphs\Websiteable;
 
 /**
- * HasProfile Trait
+ * HasProfile Trait.
  */
 trait HasProfile
 {

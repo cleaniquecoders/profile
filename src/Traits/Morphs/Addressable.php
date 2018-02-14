@@ -3,12 +3,12 @@
 namespace CleaniqueCoders\Profile\Traits\Morphs;
 
 /**
- * Addressable Trait
+ * Addressable Trait.
  */
 trait Addressable
 {
     /**
-     * Get all of the addresses
+     * Get all of the addresses.
      */
     public function addresses()
     {

@@ -8,8 +8,6 @@ class CreateEmailsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -19,15 +17,13 @@ class CreateEmailsTable extends Migration
             $table->unsignedInteger('emailable_id');
             $table->string('emailable_type');
             $table->string('email')->nullable();
-            $table->boolean('is_default')->default(false);
+            $table->boolean('is_default')->default(true);
             $table->standardTime();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
