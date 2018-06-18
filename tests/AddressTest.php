@@ -23,11 +23,11 @@ class AddressTest extends TestCase
     public function it_can_create_address()
     {
         $address = $this->user->addresses()->create([
-            'primary'       => 'OSTIA, Bangi',
-            'city'          => 'Bandar Baru Bangi',
-            'state'         => 'Selangor',
-            'country_id'    => 131,
-            'is_default'    => true,
+            'primary'    => 'OSTIA, Bangi',
+            'city'       => 'Bandar Baru Bangi',
+            'state'      => 'Selangor',
+            'country_id' => 131,
+            'is_default' => true,
         ]);
         $this->assertNotNull($address);
         $this->assertEquals('OSTIA, Bangi', $address->primary);

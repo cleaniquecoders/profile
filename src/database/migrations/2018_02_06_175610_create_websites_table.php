@@ -18,7 +18,7 @@ class CreateWebsitesTable extends Migration
             $table->string('websiteable_type');
             $table->string('name')->nullable();
             $table->string('url')->nullable();
-            $table->boolean('is_default')->default(true);
+            $table->is('default');
             $table->standardTime();
         });
     }

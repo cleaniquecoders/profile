@@ -14,7 +14,7 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->hashslug();
-            $table->addNullableForeign('country_id', 'countries');
+            $table->nullableBelongsTo('countries');
             $table->unsignedInteger('addressable_id');
             $table->string('addressable_type');
             $table->text('primary')->nullable();
@@ -22,10 +22,8 @@ class CreateAddressesTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
-            $table->boolean('is_default')->default(true);
+            $table->is('default');
             $table->standardTime();
-
-            $table->referenceOn('country_id', 'countries');
         });
     }
 

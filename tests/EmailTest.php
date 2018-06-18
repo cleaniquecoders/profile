@@ -23,8 +23,8 @@ class EmailTest extends TestCase
     public function it_can_create_email()
     {
         $email = $this->user->emails()->create([
-            'email'       => 'info@cleaniquecoders.com',
-            'is_default'  => true,
+            'email'      => 'info@cleaniquecoders.com',
+            'is_default' => true,
         ]);
         $this->assertNotNull($email);
         $this->assertEquals('info@cleaniquecoders.com', $email->email);
