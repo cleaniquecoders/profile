@@ -16,8 +16,8 @@ class PhoneTest extends TestCase
     public function it_can_create_phone()
     {
         $phone = $this->user->phones()->create([
-            'phone_number'       => '+6089259167',
-            'is_default'         => true,
+            'phone_number' => '+6089259167',
+            'is_default'   => true,
         ]);
         $this->assertNotNull($phone);
         $this->assertEquals('+6089259167', $phone->phone_number);
