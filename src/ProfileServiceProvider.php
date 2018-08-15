@@ -21,13 +21,16 @@ class ProfileServiceProvider extends ServiceProvider
         /*
          * Migrations
          */
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->publishes([
-            __DIR__ . '/database/factories' => database_path('factories/'),
+            __DIR__ . '/../database/factories' => database_path('factories/'),
         ], $this->package_tag . '-factories');
         $this->publishes([
-            __DIR__ . '/database/migrations' => database_path('migrations/'),
+            __DIR__ . '/../database/migrations' => database_path('migrations/'),
         ], $this->package_tag . '-migrations');
+        $this->publishes([
+            __DIR__ . '/../database/seeds' => database_path('seeds/'),
+        ], $this->package_tag . '-seeds');
 
         /*
          * Commands

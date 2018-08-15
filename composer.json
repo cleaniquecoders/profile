@@ -13,8 +13,8 @@
             "CleaniqueCoders\\Profile\\": "src/"
         },
         "classmap": [
-            "src/database/seeds",
-            "src/database/factories"
+            "database/seeds",
+            "database/factories"
         ],
         "files": [
             "src/Support/helpers.php"
