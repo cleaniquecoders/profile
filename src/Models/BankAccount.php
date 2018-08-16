@@ -19,6 +19,14 @@ class BankAccount extends Model
     }
 
     /**
+     * Get all of the owning bank models.
+     */
+    public function bankable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
      * Get Bank Name via Accessor.
      *
      * @return string
