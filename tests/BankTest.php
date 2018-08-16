@@ -19,7 +19,7 @@ class BankTest extends TestCase
     }
 
     /** @test */
-    public function it_has_countries_data()
+    public function it_has_banks_data()
     {
         $banks = [
             ['name' => 'AFFIN BANK BERHAD', 'swift_code' => 'PHBMMYKL', 'bank_code' => 'PHBM'],
