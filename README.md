@@ -16,19 +16,25 @@ $ composer require cleaniquecoders/profile
 \CleaniqueCoders\Profile\ProfileServiceProvider::class,
 ```
 
-In case you want to modify the migration file:
-
-```
-$ php artisan vendor:publish --tag=profile-migrations
-```
-
-Run the following to publish factory files:
+Publish factory files:
 
 ```
 $ php artisan vendor:publish --tag=profile-factories
 ```
 
-Else, you can just run the migration:
+Publish migrations files:
+
+```
+$ php artisan vendor:publish --tag=profile-migrations
+```
+
+Publish seed files:
+
+```
+$ php artisan vendor:publish --tag=profile-seeds
+```
+
+Then run:
 
 ```
 $ php artisan migrate
@@ -51,6 +57,23 @@ This lead us to use Polymorph to tackle the issue of similarity in data stored.
 
 #### Setup
 
+Available traits for polymorph:
+
+1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
+2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
+3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
+4. `CleaniqueCoders\Profile\Traits\Morphs\Websiteable`
+5. `CleaniqueCoders\Profile\Traits\Morphs\Bankable`
+
+For most common setup for entity is to use `HasProfile` trait.
+
+`HasProfile` trait consist of:
+
+1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
+2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
+3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
+4. `CleaniqueCoders\Profile\Traits\Morphs\Websiteable`
+
 ```php
 
 use CleaniqueCoders\Profile\Traits\HasProfile;
@@ -61,13 +84,6 @@ class User extends Authenticatable
 }
 ```
 
-`HasProfile` trait consist of:
-
-1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
-2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
-3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
-4. `CleaniqueCoders\Profile\Traits\Morphs\Websiteable`
-
 #### Usage
 
 **Create a record for each profile**
@@ -77,6 +93,7 @@ $user->addresses()->create([...]);
 $user->emails()->create([...]);
 $user->phones()->create([...]);
 $user->websites()->create([...]);
+$user->bankable()->create([...]);
 ```
 
 **Get all records**
@@ -86,6 +103,7 @@ $user->addresses;
 $user->emails;
 $user->phones;
 $user->websites;
+$user->banks;
 ```
 
 ## License
