@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cleaniquecoders/blueprint-macro",
-            "version": "v2.0.7",
+            "version": "v2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleaniquecoders/blueprint-macro.git",
-                "reference": "29be49ed39a30ea517ca82cb31bfbd677ec73090"
+                "reference": "31e03be1fae599a30ebb50bbaf336576dc1acc89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleaniquecoders/blueprint-macro/zipball/29be49ed39a30ea517ca82cb31bfbd677ec73090",
-                "reference": "29be49ed39a30ea517ca82cb31bfbd677ec73090",
+                "url": "https://api.github.com/repos/cleaniquecoders/blueprint-macro/zipball/31e03be1fae599a30ebb50bbaf336576dc1acc89",
+                "reference": "31e03be1fae599a30ebb50bbaf336576dc1acc89",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 }
             ],
             "description": "Laravel Blueprint Macro",
-            "time": "2018-08-15T05:26:53+00:00"
+            "time": "2018-08-16T04:46:15+00:00"
         },
         {
             "name": "doctrine/cache",
