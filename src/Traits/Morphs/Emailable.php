@@ -8,7 +8,7 @@ namespace CleaniqueCoders\Profile\Traits\Morphs;
 trait Emailable
 {
     /**
-     * Get all of the emails.
+     * Get all emails.
      */
     public function emails()
     {

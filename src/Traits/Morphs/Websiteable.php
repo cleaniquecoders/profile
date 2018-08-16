@@ -8,7 +8,7 @@ namespace CleaniqueCoders\Profile\Traits\Morphs;
 trait Websiteable
 {
     /**
-     * Get all of the websites.
+     * Get all websites.
      */
     public function websites()
     {

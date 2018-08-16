@@ -8,7 +8,7 @@ namespace CleaniqueCoders\Profile\Traits\Morphs;
 trait Addressable
 {
     /**
-     * Get all of the addresses.
+     * Get all addresses.
      */
     public function addresses()
     {

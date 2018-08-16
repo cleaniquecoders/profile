@@ -37,5 +37,6 @@ class SeedProfileCommand extends Command
     {
         $this->call('db:seed', ['--class' => 'CountrySeeder']);
         $this->call('db:seed', ['--class' => 'PhoneTypeSeeder']);
+        $this->call('db:seed', ['--class' => 'BankSeeder']);
     }
 }

@@ -8,7 +8,7 @@ namespace CleaniqueCoders\Profile\Traits\Morphs;
 trait Phoneable
 {
     /**
-     * Get all of the phones.
+     * Get all phones.
      */
     public function phones()
     {
