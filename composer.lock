@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4558e684b7242908b9584f37bd39565c",
+    "content-hash": "7145bbe6fd9a7ec547585e23d54d6a5e",
     "packages": [
         {
             "name": "cleaniquecoders/blueprint-macro",
@@ -4122,7 +4122,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1"
+        "php": ">=7.2"
     },
     "platform-dev": []
 }
