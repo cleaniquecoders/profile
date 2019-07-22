@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Schema;
 class CountryTest extends TestCase
 {
     /** @test */
+    public function it_has_config()
+    {
+        $this->assertTrue(! empty(config('profile')));
+        $this->assertTrue(in_array('CountrySeeder', config('profile.seeders')));
+    }
+
+    /** @test */
     public function has_countries_table()
     {
         $this->assertTrue(Schema::hasTable('countries'));

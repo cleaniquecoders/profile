@@ -6,6 +6,36 @@ use Illuminate\Support\Facades\Schema;
 
 class BankTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    protected $get_actual_config_key = 'bank';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_key = 'bank';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_model_class = '\CleaniqueCoders\Profile\Models\Bank::class';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_model_class = '\CleaniqueCoders\Profile\Models\Bank::class';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_type = 'bankable';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_type = 'bankable';
+
     /** @test */
     public function it_has_banks_table()
     {

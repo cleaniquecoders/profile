@@ -6,6 +6,36 @@ use Illuminate\Support\Facades\Schema;
 
 class WebsiteTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    protected $get_actual_config_key = 'website';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_key = 'website';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_model_class = '\CleaniqueCoders\Profile\Models\Website::class';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_model_class = '\CleaniqueCoders\Profile\Models\Website::class';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_type = 'websiteable';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_type = 'websiteable';
+
     /** @test */
     public function has_websites_table()
     {

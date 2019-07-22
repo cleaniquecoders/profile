@@ -76,6 +76,45 @@ class TestCase extends \Orchestra\Testbench\TestCase
             });
     }
 
+    /** @test */
+    public function it_has_config()
+    {
+        $this->assertTrue(! empty(config('profile')));
+        $this->assertEquals($this->getActualConfigKey(), $this->getExpectedConfigKey());
+        $this->assertEquals($this->getActualConfigModelClass(), $this->getExpectedConfigModelClass());
+        $this->assertEquals($this->getActualConfigType(), $this->getExpectedConfigType());
+    }
+
+    public function getActualConfigKey(): string
+    {
+        return $this->get_actual_config_key;
+    }
+
+    public function getExpectedConfigKey(): string
+    {
+        return $this->get_expected_config_key;
+    }
+
+    public function getActualConfigModelClass(): string
+    {
+        return $this->get_actual_config_model_class;
+    }
+
+    public function getExpectedConfigModelClass(): string
+    {
+        return $this->get_expected_config_model_class;
+    }
+
+    public function getActualConfigType(): string
+    {
+        return $this->get_actual_config_type;
+    }
+
+    public function getExpectedConfigType(): string
+    {
+        return $this->get_expected_config_type;
+    }
+
     protected function getPackageProviders($app)
     {
         return [

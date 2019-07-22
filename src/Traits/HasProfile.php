@@ -12,5 +12,8 @@ use CleaniqueCoders\Profile\Traits\Morphs\Websiteable;
  */
 trait HasProfile
 {
-    use Addressable, Emailable, Phoneable, Websiteable;
+    use Addressable;
+    use Emailable;
+    use Phoneable;
+    use Websiteable;
 }

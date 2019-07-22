@@ -6,6 +6,36 @@ use Illuminate\Support\Facades\Schema;
 
 class AddressTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    protected $get_actual_config_key = 'address';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_key = 'address';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_model_class = '\CleaniqueCoders\Profile\Models\Address::class';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_model_class = '\CleaniqueCoders\Profile\Models\Address::class';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_type = 'addressable';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_type = 'addressable';
+
     /** @test */
     public function it_has_addresses_table()
     {

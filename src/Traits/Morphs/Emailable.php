@@ -12,6 +12,9 @@ trait Emailable
      */
     public function emails()
     {
-        return $this->morphMany(\CleaniqueCoders\Profile\Models\Email::class, 'emailable');
+        return $this->morphMany(
+            config('profile.providers.email.model'),
+            config('profile.providers.email.type')
+        );
     }
 }

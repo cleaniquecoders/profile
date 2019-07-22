@@ -12,6 +12,9 @@ trait Phoneable
      */
     public function phones()
     {
-        return $this->morphMany(\CleaniqueCoders\Profile\Models\Phone::class, 'phoneable');
+        return $this->morphMany(
+            config('profile.providers.phone.model'),
+            config('profile.providers.phone.type')
+        );
     }
 }

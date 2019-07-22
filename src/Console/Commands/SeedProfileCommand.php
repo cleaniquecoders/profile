@@ -35,8 +35,12 @@ class SeedProfileCommand extends Command
      */
     public function handle()
     {
-        $this->call('db:seed', ['--class' => 'CountrySeeder']);
-        $this->call('db:seed', ['--class' => 'PhoneTypeSeeder']);
-        $this->call('db:seed', ['--class' => 'BankSeeder']);
+        foreach (config('profile.seeders') as $seeder) {
+            if (! class_exists($seeder)) {
+                $this->comment($seeder . '  does not exists');
+                continue;
+            }
+            $this->call('db:seed', ['--class' => $seeder]);
+        }
     }
 }

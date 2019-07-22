@@ -7,12 +7,14 @@ namespace CleaniqueCoders\Profile\Traits\Morphs;
  */
 trait Bankable
 {
-	/**
+    /**
      * Get bank.
      */
     public function bank()
     {
-        return $this->belongsTo(\CleaniqueCoders\Profile\Models\Bank::class);
+        return $this->belongsTo(
+            config('profile.profile.providers.bank.model')
+        );
     }
 
     /**
@@ -20,6 +22,9 @@ trait Bankable
      */
     public function banks()
     {
-        return $this->morphMany(\CleaniqueCoders\Profile\Models\BankAccount::class, 'bankable');
+        return $this->morphMany(
+            config('profile.providers.bank.model'),
+            config('profile.providers.bank.type')
+        );
     }
 }

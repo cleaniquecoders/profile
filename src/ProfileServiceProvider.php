@@ -19,13 +19,23 @@ class ProfileServiceProvider extends ServiceProvider
     public function boot()
     {
         /*
+         * Configuration
+         */
+        $this->publishes([
+            __DIR__ . '/../config/profile.php' => config_path('profile.php'),
+        ], 'profile');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/profile.php', 'profile'
+        );
+
+        /*
          * Migrations
          */
         $this->publishes([
-            __DIR__ . '/../database/factories' => database_path('factories/'),
+            __DIR__ . '/../stubs/database/factories' => database_path('factories/'),
         ], $this->package_tag . '-factories');
         $this->publishes([
-            __DIR__ . '/../database/migrations' => database_path('migrations/'),
+            __DIR__ . '/../stubs/database/migrations' => database_path('migrations/'),
         ], $this->package_tag . '-migrations');
         $this->publishes([
             __DIR__ . '/../database/seeds' => database_path('seeds/'),

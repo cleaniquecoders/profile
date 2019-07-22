@@ -12,6 +12,9 @@ trait Addressable
      */
     public function addresses()
     {
-        return $this->morphMany(\CleaniqueCoders\Profile\Models\Address::class, 'addressable');
+        return $this->morphMany(
+            config('profile.providers.address.model'),
+            config('profile.providers.address.type')
+        );
     }
 }

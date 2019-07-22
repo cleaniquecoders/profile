@@ -6,6 +6,36 @@ use Illuminate\Support\Facades\Schema;
 
 class EmailTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    protected $get_actual_config_key = 'email';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_key = 'email';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_model_class = '\CleaniqueCoders\Profile\Models\Email::class';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_model_class = '\CleaniqueCoders\Profile\Models\Email::class';
+
+    /**
+     * @var string
+     */
+    protected $get_actual_config_type = 'emailable';
+
+    /**
+     * @var string
+     */
+    protected $get_expected_config_type = 'emailable';
+
     /** @test */
     public function has_emails_table()
     {

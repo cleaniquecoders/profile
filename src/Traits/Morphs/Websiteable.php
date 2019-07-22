@@ -12,6 +12,9 @@ trait Websiteable
      */
     public function websites()
     {
-        return $this->morphMany(\CleaniqueCoders\Profile\Models\Website::class, 'websiteable');
+        return $this->morphMany(
+            config('profile.providers.website.model'),
+            config('profile.providers.website.type')
+        );
     }
 }
