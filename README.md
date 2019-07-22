@@ -46,6 +46,12 @@ Then seed the Country and Phone Types data with:
 $ php artisan profile:seed
 ```
 
+#### Configuration
+
+Now you are able to configure your own models and type name. See `config/profile.php`.
+
+You may want to define your own seeders for `profile:seed` in `config/profile.php`.
+
 ### Available Polymorph Traits
 
 User Cases: 
