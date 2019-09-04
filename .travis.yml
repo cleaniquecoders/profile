@@ -3,12 +3,13 @@ language: php
 php:
   - 7.2
 
-before_script:
-  - travis_retry composer install --prefer-dist --no-interaction
-
 cache:
   directories:
-    - vendor
+    - $HOME/.composer/cache
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer update --prefer-source --no-interaction --dev
 
 script:
-  - vendor/bin/phpunit --testdox --verbose
+  - vendor/bin/phpunit
