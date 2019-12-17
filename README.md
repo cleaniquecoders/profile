@@ -82,9 +82,12 @@ For most common setup for entity is to use `HasProfile` trait.
 
 ```php
 
-use CleaniqueCoders\Profile\Traits\HasProfile;
+namespace App;
 
-class User extends Authenticatable 
+use CleaniqueCoders\Profile\Traits\HasProfile;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
 {
 	use HasProfile;
 }
@@ -95,9 +98,46 @@ class User extends Authenticatable
 **Create a record for each profile**
 
 ```php
-$user->addresses()->create([...]);
+$user->addresses()->create([
+	'primary' => '9 miles, Sungei Way',
+	'secondary' => 'P.O.Box 6503, Seri Setia',
+	'city' => 'Petaling Jaya',
+	'postcode' => '46150',
+	'state' => 'Selangor',
+	'country_id' => config('profile.providers.country.model')::name('Malaysia')->first()->id
+]);
+```
+
+```php 
+$user->phones()->create([
+    'phone_number'  => '+6089259167',
+    'is_default'    => true,
+    'phone_type_id' => PhoneType::HOME,
+]);
+$user->phones()->create([
+    'phone_number'  => '+60191234567',
+    'is_default'    => true,
+    'phone_type_id' => PhoneType::MOBILE,
+]);
+$user->phones()->create([
+    'phone_number'  => '+60380001000',
+    'is_default'    => true,
+    'phone_type_id' => PhoneType::OFFICE,
+]);
+$user->phones()->create([
+    'phone_number'  => '+60380001000',
+    'is_default'    => true,
+    'phone_type_id' => PhoneType::OTHER,
+]);
+$user->phones()->create([
+    'phone_number'  => '+60380001001',
+    'is_default'    => true,
+    'phone_type_id' => PhoneType::FAX,
+]);
+```
+
+```php
 $user->emails()->create([...]);
-$user->phones()->create([...]);
 $user->websites()->create([...]);
 $user->bankable()->create([...]);
 ```

@@ -21,6 +21,9 @@ return [
         'phoneType' => [
             'model' => \CleaniqueCoders\Profile\Models\PhoneType::class,
         ],
+        'country' => [
+            'model' => \CleaniqueCoders\Profile\Models\Country::class,
+        ],
         'website' => [
             'model' => \CleaniqueCoders\Profile\Models\Website::class,
             'type'  => 'websiteable',

@@ -9,9 +9,9 @@ class BankAccount extends Model
     protected $guarded = ['id'];
 
     /**
-     * [bank description].
+     * Bank.
      *
-     * @return [type] [description]
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function bank()
     {
