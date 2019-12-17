@@ -134,6 +134,12 @@ $user->phones()->create([
     'is_default'    => true,
     'phone_type_id' => PhoneType::FAX,
 ]);
+
+// you can futher query using local scopes in phone models.
+// get the first home phone number
+$user->phones()->home()->first();
+// get all the mobile phone numbers
+$user->phones()->mobile()->get();
 ```
 
 ```php
