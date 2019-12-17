@@ -10,4 +10,5 @@ class PhoneType extends Model
     const MOBILE = 2;
     const OFFICE = 3;
     const OTHER  = 4;
+    const FAX    = 5;
 }

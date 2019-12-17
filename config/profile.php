@@ -18,6 +18,9 @@ return [
             'model' => \CleaniqueCoders\Profile\Models\Phone::class,
             'type'  => 'phoneable',
         ],
+        'phoneType' => [
+            'model' => \CleaniqueCoders\Profile\Models\PhoneType::class,
+        ],
         'website' => [
             'model' => \CleaniqueCoders\Profile\Models\Website::class,
             'type'  => 'websiteable',
@@ -27,5 +30,14 @@ return [
         BankSeeder::class,
         CountrySeeder::class,
         PhoneTypeSeeder::class,
+    ],
+    'data' => [
+        'phoneType' => [
+            'Home',
+            'Mobile',
+            'Office',
+            'Other',
+            'Fax',
+        ],
     ],
 ];

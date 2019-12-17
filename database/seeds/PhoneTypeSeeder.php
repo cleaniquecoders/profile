@@ -10,12 +10,7 @@ class PhoneTypeSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
-            'Home',
-            'Mobile',
-            'Office',
-            'Other',
-        ];
+        $data = config('profile.data.phoneType');
 
         foreach ($data as $datum) {
             \CleaniqueCoders\Profile\Models\PhoneType::create([
