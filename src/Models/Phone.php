@@ -28,6 +28,7 @@ class Phone extends Model
 
     /**
      * Phone Type.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function type()

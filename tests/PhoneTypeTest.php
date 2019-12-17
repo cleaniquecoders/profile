@@ -29,7 +29,7 @@ class PhoneTypeTest extends TestCase
     /** @test */
     public function has_common_phone_types_config()
     {
-        $this->assertTrue(!empty(config('profile.data.phoneType')));
+        $this->assertTrue(! empty(config('profile.data.phoneType')));
         $types = [
             'Home',
             'Mobile',
