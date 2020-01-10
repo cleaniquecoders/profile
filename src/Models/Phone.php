@@ -3,7 +3,7 @@
 namespace CleaniqueCoders\Profile\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 class Phone extends Model
 {
@@ -40,9 +40,9 @@ class Phone extends Model
     /**
      * Get Home Phone Numbers.
      *
-     * @param \Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeHome(Builder $query)
     {
@@ -52,21 +52,21 @@ class Phone extends Model
     /**
      * Get Mobile Phone Numbers.
      *
-     * @param \Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeMobile(Builder $query)
     {
-        return $query->where('phone_type_id', PhoneType::Mobile);
+        return $query->where('phone_type_id', PhoneType::MOBILE);
     }
 
     /**
      * Get Office Phone Numbers.
      *
-     * @param \Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOffice(Builder $query)
     {
@@ -76,9 +76,9 @@ class Phone extends Model
     /**
      * Get Other Phone Numbers.
      *
-     * @param \Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOther(Builder $query)
     {
@@ -88,9 +88,9 @@ class Phone extends Model
     /**
      * Get Fax Phone Numbers.
      *
-     * @param \Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeFax(Builder $query)
     {
