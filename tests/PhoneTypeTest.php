@@ -10,7 +10,7 @@ class PhoneTypeTest extends TestCase
     public function it_has_config()
     {
         $this->assertTrue(! empty(config('profile')));
-        $this->assertTrue(in_array('PhoneTypeSeeder', config('profile.seeders')));
+        $this->assertContains('PhoneTypeSeeder', config('profile.seeders'));
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class PhoneTypeTest extends TestCase
             'Fax',
         ];
         foreach ($types as $type) {
-            $this->assertTrue(in_array($type, config('profile.data.phoneType')));
+            $this->assertContains($type, config('profile.data.phoneType'));
         }
     }
 

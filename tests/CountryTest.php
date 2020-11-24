@@ -10,7 +10,7 @@ class CountryTest extends TestCase
     public function it_has_config()
     {
         $this->assertTrue(! empty(config('profile')));
-        $this->assertTrue(in_array('CountrySeeder', config('profile.seeders')));
+        $this->assertContains('CountrySeeder', config('profile.seeders'));
     }
 
     /** @test */
