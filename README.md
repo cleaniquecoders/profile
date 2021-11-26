@@ -2,7 +2,7 @@
 
 Profile is a package to store basic information - addresses, phone numbers, emails, and websites using [Polymorph](https://laravel.com/docs/6.x/eloquent-relationships#polymorphic-relationships) approach.
 
-[![Build Status](https://travis-ci.org/cleaniquecoders/profile.svg?branch=master)](https://travis-ci.org/cleaniquecoders/profile) [![Latest Stable Version](https://poser.pugx.org/cleaniquecoders/profile/v/stable)](https://packagist.org/packages/cleaniquecoders/profile) [![Total Downloads](https://poser.pugx.org/cleaniquecoders/profile/downloads)](https://packagist.org/packages/cleaniquecoders/profile) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleaniquecoders/profile/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleaniquecoders/profile/?branch=master) [![License](https://poser.pugx.org/cleaniquecoders/profile/license)](https://packagist.org/packages/cleaniquecoders/profile)
+[![run-tests](https://github.com/cleaniquecoders/profile/actions/workflows/run-tests.yml/badge.svg?branch=master)](https://github.com/cleaniquecoders/profile/actions/workflows/run-tests.yml) [![Latest Stable Version](https://poser.pugx.org/cleaniquecoders/profile/v/stable)](https://packagist.org/packages/cleaniquecoders/profile) [![Total Downloads](https://poser.pugx.org/cleaniquecoders/profile/downloads)](https://packagist.org/packages/cleaniquecoders/profile) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleaniquecoders/profile/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleaniquecoders/profile/?branch=master) [![License](https://poser.pugx.org/cleaniquecoders/profile/license)](https://packagist.org/packages/cleaniquecoders/profile)
 
 ## Installation
 
@@ -56,7 +56,7 @@ You may want to define your own seeders for `profile:seed` in `config/profile.ph
 
 ### Available Polymorph Traits
 
-User Cases: 
+User Cases:
 
 1. A company has addresses, phone numbers, emails and websites.
 2. An employee has addresses, phone numbers, emails and websites.
@@ -110,7 +110,7 @@ $user->addresses()->create([
 ]);
 ```
 
-```php 
+```php
 $user->phones()->create([
     'phone_number'  => '+6089259167',
     'is_default'    => true,
