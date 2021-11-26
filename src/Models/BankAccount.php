@@ -8,6 +8,8 @@ class BankAccount extends Model
 {
     protected $guarded = ['id'];
 
+    protected $bank;
+    
     /**
      * Bank.
      *

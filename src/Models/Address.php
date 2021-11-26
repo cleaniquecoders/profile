@@ -29,7 +29,6 @@ class Address extends Model
     /**
      * Get Country.
      *
-     * @return \CleaniqueCoders\Profile\Models\Country
      */
     public function country()
     {
