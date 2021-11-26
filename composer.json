@@ -23,7 +23,7 @@
         }
     },
     "require": {
-        "php": "^8.0|^8.1",
+        "php": "^8.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
         "illuminate/auth": "^6.0|^7.0|^8.0",
         "cleaniquecoders/blueprint-macro": "^4.0"
