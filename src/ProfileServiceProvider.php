@@ -25,7 +25,8 @@ class ProfileServiceProvider extends ServiceProvider
             __DIR__ . '/../config/profile.php' => config_path('profile.php'),
         ], 'profile');
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/profile.php', 'profile'
+            __DIR__ . '/../config/profile.php',
+            'profile'
         );
 
         /*

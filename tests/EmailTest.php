@@ -53,7 +53,7 @@ class EmailTest extends TestCase
     public function itCanCreateEmail()
     {
         $email = $this->user->emails()->create([
-            'email'      => 'info@cleaniquecoders.com',
+            'email' => 'info@cleaniquecoders.com',
             'is_default' => true,
         ]);
         $this->assertNotNull($email);
