@@ -53,8 +53,8 @@ class WebsiteTest extends TestCase
     public function itCanCreateWebsite()
     {
         $website = $this->user->websites()->create([
-            'name'       => 'Cleanique Coders',
-            'url'        => 'https://cleaniquecoders.com',
+            'name' => 'Cleanique Coders',
+            'url' => 'https://cleaniquecoders.com',
             'is_default' => true,
         ]);
         $this->assertNotNull($website);

@@ -53,9 +53,9 @@ class AddressTest extends TestCase
     public function itCanCreateAddress()
     {
         $address = $this->user->addresses()->create([
-            'primary'    => 'OSTIA, Bangi',
-            'city'       => 'Bandar Baru Bangi',
-            'state'      => 'Selangor',
+            'primary' => 'OSTIA, Bangi',
+            'city' => 'Bandar Baru Bangi',
+            'state' => 'Selangor',
             'country_id' => 131,
             'is_default' => true,
         ]);

@@ -47,8 +47,8 @@ class PhoneTest extends TestCase
     public function itCanCreateHomePhone()
     {
         $phone = $this->user->phones()->create([
-            'phone_number'  => '+6089259167',
-            'is_default'    => true,
+            'phone_number' => '+6089259167',
+            'is_default' => true,
             'phone_type_id' => PhoneType::HOME,
         ]);
 
@@ -62,8 +62,8 @@ class PhoneTest extends TestCase
     public function itCanCreateMobilePhone()
     {
         $phone = $this->user->phones()->create([
-            'phone_number'  => '+60191234567',
-            'is_default'    => true,
+            'phone_number' => '+60191234567',
+            'is_default' => true,
             'phone_type_id' => PhoneType::MOBILE,
         ]);
         $this->assertNotNull($phone);
@@ -76,8 +76,8 @@ class PhoneTest extends TestCase
     public function itCanCreateOfficePhone()
     {
         $phone = $this->user->phones()->create([
-            'phone_number'  => '+60380001000',
-            'is_default'    => true,
+            'phone_number' => '+60380001000',
+            'is_default' => true,
             'phone_type_id' => PhoneType::OFFICE,
         ]);
         $this->assertNotNull($phone);
@@ -90,8 +90,8 @@ class PhoneTest extends TestCase
     public function itCanCreateOtherPhone()
     {
         $phone = $this->user->phones()->create([
-            'phone_number'  => '+60380001000',
-            'is_default'    => true,
+            'phone_number' => '+60380001000',
+            'is_default' => true,
             'phone_type_id' => PhoneType::OTHER,
         ]);
         $this->assertNotNull($phone);
@@ -104,8 +104,8 @@ class PhoneTest extends TestCase
     public function itCanCreateFaxPhone()
     {
         $phone = $this->user->phones()->create([
-            'phone_number'  => '+60380001001',
-            'is_default'    => true,
+            'phone_number' => '+60380001001',
+            'is_default' => true,
             'phone_type_id' => PhoneType::FAX,
         ]);
         $this->assertNotNull($phone);

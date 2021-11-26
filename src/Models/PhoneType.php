@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PhoneType extends Model
 {
-    const HOME   = 1;
-    const MOBILE = 2;
-    const OFFICE = 3;
-    const OTHER  = 4;
-    const FAX    = 5;
+    public const HOME = 1;
+    public const MOBILE = 2;
+    public const OFFICE = 3;
+    public const OTHER = 4;
+    public const FAX = 5;
 }
