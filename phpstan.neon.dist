@@ -10,4 +10,5 @@ parameters:
         - database
     tmpDir: build/phpstan
     checkMissingIterableValueType: false
-
+    ignoreErrors:
+        - '#Call to an undefined static method [a-zA-Z0-9\\_]+::create\(\).#'
