@@ -1,5 +1,7 @@
 <?php
 
+namespace CleaniqueCoders\Profile\Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 

@@ -7,27 +7,27 @@ use Illuminate\Support\Facades\Schema;
 class PhoneTypeTest extends TestCase
 {
     /** @test */
-    public function it_has_config()
+    public function itHasConfig()
     {
         $this->assertTrue(! empty(config('profile')));
-        $this->assertContains('PhoneTypeSeeder', config('profile.seeders'));
+        $this->assertContains('CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder', config('profile.seeders'));
     }
 
     /** @test */
-    public function has_phone_types_table()
+    public function hasPhoneTypesTable()
     {
         $this->assertTrue(Schema::hasTable('phone_types'));
     }
 
     /** @test */
-    public function has_phone_types()
+    public function hasPhoneTypes()
     {
         $phone_types = \DB::table('phone_types')->count();
         $this->assertEquals(5, $phone_types);
     }
 
     /** @test */
-    public function has_common_phone_types_config()
+    public function hasCommonPhoneTypesConfig()
     {
         $this->assertTrue(! empty(config('profile.data.phoneType')));
         $types = [
@@ -43,10 +43,10 @@ class PhoneTypeTest extends TestCase
     }
 
     /** @test */
-    public function has_common_phone_types()
+    public function hasCommonPhoneTypes()
     {
         $this->artisan('db:seed', [
-            '--class' => \PhoneTypeSeeder::class,
+            '--class' => \CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder::class,
         ]);
 
         $this->assertDatabaseHas('phone_types', [

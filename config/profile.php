@@ -30,9 +30,9 @@ return [
         ],
     ],
     'seeders' => [
-        BankSeeder::class,
-        CountrySeeder::class,
-        PhoneTypeSeeder::class,
+        \CleaniqueCoders\Profile\Database\Seeders\BankSeeder::class,
+        \CleaniqueCoders\Profile\Database\Seeders\CountrySeeder::class,
+        \CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder::class,
     ],
     'data' => [
         'phoneType' => [

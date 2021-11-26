@@ -37,20 +37,20 @@ class AddressTest extends TestCase
     protected $get_expected_config_type = 'addressable';
 
     /** @test */
-    public function it_has_addresses_table()
+    public function itHasAddressesTable()
     {
         $this->assertTrue(Schema::hasTable('addresses'));
     }
 
     /** @test */
-    public function it_has_no_addresses_records()
+    public function itHasNoAddressesRecords()
     {
         $addresses = \DB::table('addresses')->count();
         $this->assertEquals(0, $addresses);
     }
 
     /** @test */
-    public function it_can_create_address()
+    public function itCanCreateAddress()
     {
         $address = $this->user->addresses()->create([
             'primary'    => 'OSTIA, Bangi',

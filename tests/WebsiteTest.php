@@ -37,20 +37,20 @@ class WebsiteTest extends TestCase
     protected $get_expected_config_type = 'websiteable';
 
     /** @test */
-    public function has_websites_table()
+    public function hasWebsitesTable()
     {
         $this->assertTrue(Schema::hasTable('websites'));
     }
 
     /** @test */
-    public function has_websites()
+    public function hasWebsites()
     {
         $websites = \DB::table('websites')->count();
         $this->assertEquals(0, $websites);
     }
 
     /** @test */
-    public function it_can_create_website()
+    public function itCanCreateWebsite()
     {
         $website = $this->user->websites()->create([
             'name'       => 'Cleanique Coders',

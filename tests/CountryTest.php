@@ -7,20 +7,20 @@ use Illuminate\Support\Facades\Schema;
 class CountryTest extends TestCase
 {
     /** @test */
-    public function it_has_config()
+    public function itHasConfig()
     {
         $this->assertTrue(! empty(config('profile')));
-        $this->assertContains('CountrySeeder', config('profile.seeders'));
+        $this->assertContains('CleaniqueCoders\Profile\Database\Seeders\CountrySeeder', config('profile.seeders'));
     }
 
     /** @test */
-    public function has_countries_table()
+    public function hasCountriesTable()
     {
         $this->assertTrue(Schema::hasTable('countries'));
     }
 
     /** @test */
-    public function has_countries_data()
+    public function hasCountriesData()
     {
         $countries = \DB::table('countries')->count();
         $this->assertEquals(241, $countries);

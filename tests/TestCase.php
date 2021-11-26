@@ -77,7 +77,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     }
 
     /** @test */
-    public function it_has_config()
+    public function itHasConfig()
     {
         $this->assertTrue(! empty(config('profile')));
         $this->assertEquals($this->getActualConfigKey(), $this->getExpectedConfigKey());

@@ -37,20 +37,20 @@ class EmailTest extends TestCase
     protected $get_expected_config_type = 'emailable';
 
     /** @test */
-    public function has_emails_table()
+    public function hasEmailsTable()
     {
         $this->assertTrue(Schema::hasTable('emails'));
     }
 
     /** @test */
-    public function it_has_no_emails()
+    public function itHasNoEmails()
     {
         $emails = \DB::table('emails')->count();
         $this->assertEquals(0, $emails);
     }
 
     /** @test */
-    public function it_can_create_email()
+    public function itCanCreateEmail()
     {
         $email = $this->user->emails()->create([
             'email'      => 'info@cleaniquecoders.com',

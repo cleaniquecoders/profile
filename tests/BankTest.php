@@ -37,19 +37,19 @@ class BankTest extends TestCase
     protected $get_expected_config_type = 'bankable';
 
     /** @test */
-    public function it_has_banks_table()
+    public function itHasBanksTable()
     {
         $this->assertTrue(Schema::hasTable('banks'));
     }
 
     /** @test */
-    public function it_has_bank_accounts_table()
+    public function itHasBankAccountsTable()
     {
         $this->assertTrue(Schema::hasTable('bank_accounts'));
     }
 
     /** @test */
-    public function it_has_banks_data()
+    public function itHasBanksData()
     {
         $banks = [
             ['name' => 'AFFIN BANK BERHAD', 'swift_code' => 'PHBMMYKL', 'bank_code' => 'PHBM'],

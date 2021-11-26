@@ -38,13 +38,13 @@ class PhoneTest extends TestCase
     protected $get_expected_config_type = 'phoneable';
 
     /** @test */
-    public function it_has_phones_table()
+    public function itHasPhonesTable()
     {
         $this->assertTrue(Schema::hasTable('phones'));
     }
 
     /** @test */
-    public function it_can_create_home_phone()
+    public function itCanCreateHomePhone()
     {
         $phone = $this->user->phones()->create([
             'phone_number'  => '+6089259167',
@@ -59,7 +59,7 @@ class PhoneTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_mobile_phone()
+    public function itCanCreateMobilePhone()
     {
         $phone = $this->user->phones()->create([
             'phone_number'  => '+60191234567',
@@ -73,7 +73,7 @@ class PhoneTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_office_phone()
+    public function itCanCreateOfficePhone()
     {
         $phone = $this->user->phones()->create([
             'phone_number'  => '+60380001000',
@@ -87,7 +87,7 @@ class PhoneTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_other_phone()
+    public function itCanCreateOtherPhone()
     {
         $phone = $this->user->phones()->create([
             'phone_number'  => '+60380001000',
@@ -101,7 +101,7 @@ class PhoneTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_fax_phone()
+    public function itCanCreateFaxPhone()
     {
         $phone = $this->user->phones()->create([
             'phone_number'  => '+60380001001',
