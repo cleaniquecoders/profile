@@ -4,19 +4,19 @@ return [
     'providers' => [
         'address' => [
             'model' => \CleaniqueCoders\Profile\Models\Address::class,
-            'type'  => 'addressable',
+            'type' => 'addressable',
         ],
         'email' => [
             'model' => \CleaniqueCoders\Profile\Models\Email::class,
-            'type'  => 'emailable',
+            'type' => 'emailable',
         ],
         'bank' => [
             'model' => \CleaniqueCoders\Profile\Models\Bank::class,
-            'type'  => 'bankable',
+            'type' => 'bankable',
         ],
         'phone' => [
             'model' => \CleaniqueCoders\Profile\Models\Phone::class,
-            'type'  => 'phoneable',
+            'type' => 'phoneable',
         ],
         'phoneType' => [
             'model' => \CleaniqueCoders\Profile\Models\PhoneType::class,
@@ -26,7 +26,7 @@ return [
         ],
         'website' => [
             'model' => \CleaniqueCoders\Profile\Models\Website::class,
-            'type'  => 'websiteable',
+            'type' => 'websiteable',
         ],
     ],
     'seeders' => [

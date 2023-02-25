@@ -40,7 +40,6 @@ class Phone extends Model
     /**
      * Get Home Phone Numbers.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -52,7 +51,6 @@ class Phone extends Model
     /**
      * Get Mobile Phone Numbers.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -64,7 +62,6 @@ class Phone extends Model
     /**
      * Get Office Phone Numbers.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -76,7 +73,6 @@ class Phone extends Model
     /**
      * Get Other Phone Numbers.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -88,7 +84,6 @@ class Phone extends Model
     /**
      * Get Fax Phone Numbers.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */

@@ -22,10 +22,10 @@ class ProfileServiceProvider extends ServiceProvider
          * Configuration
          */
         $this->publishes([
-            __DIR__ . '/../config/profile.php' => config_path('profile.php'),
+            __DIR__.'/../config/profile.php' => config_path('profile.php'),
         ], 'profile');
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/profile.php',
+            __DIR__.'/../config/profile.php',
             'profile'
         );
 
@@ -33,14 +33,14 @@ class ProfileServiceProvider extends ServiceProvider
          * Migrations
          */
         $this->publishes([
-            __DIR__ . '/../stubs/database/factories' => database_path('factories/'),
-        ], $this->package_tag . '-factories');
+            __DIR__.'/../stubs/database/factories' => database_path('factories/'),
+        ], $this->package_tag.'-factories');
         $this->publishes([
-            __DIR__ . '/../stubs/database/migrations' => database_path('migrations/'),
-        ], $this->package_tag . '-migrations');
+            __DIR__.'/../stubs/database/migrations' => database_path('migrations/'),
+        ], $this->package_tag.'-migrations');
         $this->publishes([
-            __DIR__ . '/../database/seeds' => database_path('seeds/'),
-        ], $this->package_tag . '-seeds');
+            __DIR__.'/../database/seeds' => database_path('seeds/'),
+        ], $this->package_tag.'-seeds');
 
         /*
          * Commands

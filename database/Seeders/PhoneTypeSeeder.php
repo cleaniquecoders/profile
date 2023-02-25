@@ -16,7 +16,7 @@ class PhoneTypeSeeder extends Seeder
 
         foreach ($data as $datum) {
             \CleaniqueCoders\Profile\Models\PhoneType::create([
-                'name'  => $datum,
+                'name' => $datum,
                 'label' => Str::slug($datum, '-'),
             ]);
         }

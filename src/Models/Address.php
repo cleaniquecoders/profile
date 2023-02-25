@@ -28,7 +28,6 @@ class Address extends Model
 
     /**
      * Get Country.
-     *
      */
     public function country()
     {

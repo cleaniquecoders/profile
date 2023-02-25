@@ -37,7 +37,7 @@ class SeedProfileCommand extends Command
     {
         foreach (config('profile.seeders') as $seeder) {
             if (! class_exists($seeder)) {
-                $this->comment($seeder . '  does not exists');
+                $this->comment($seeder.'  does not exists');
 
                 continue;
             }
