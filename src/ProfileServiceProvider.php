@@ -39,7 +39,7 @@ class ProfileServiceProvider extends ServiceProvider
             __DIR__.'/../stubs/database/migrations' => database_path('migrations/'),
         ], $this->package_tag.'-migrations');
         $this->publishes([
-            __DIR__.'/../database/seeds' => database_path('seeds/'),
+            __DIR__.'/../database/Seeders' => database_path('seeders/'),
         ], $this->package_tag.'-seeds');
 
         /*
