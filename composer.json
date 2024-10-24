@@ -26,7 +26,6 @@
         "php": "^8.3",
         "illuminate/support": "^11.0",
         "illuminate/auth": "^11.0",
-        "cleaniquecoders/blueprint-macro": "^5.0",
         "spatie/laravel-package-tools": "^1.16",
         "cleaniquecoders/traitify": "^1.0"
     },
