@@ -68,7 +68,7 @@ For most common setup for entity is to use `HasProfile` trait.
 
 namespace App;
 
-use CleaniqueCoders\Profile\Traits\HasProfile;
+use CleaniqueCoders\Profile\Concerns\HasProfile;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
