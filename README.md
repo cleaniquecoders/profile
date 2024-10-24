@@ -6,46 +6,28 @@ Profile is a package to store basic information - addresses, phone numbers, emai
 
 ## Installation
 
-1. In order to install Profile in your Laravel project:
+Install Profile package by running in your terminal:
 
-```
-$ composer require cleaniquecoders/profile
-```
-
-2. Then in your `config/app.php` add the following to the `providers` key:
-
-```php
-\CleaniqueCoders\Profile\ProfileServiceProvider::class,
-```
-
-Publish factory files:
-
-```
-$ php artisan vendor:publish --tag=profile-factories
+```bash
+composer require cleaniquecoders/profile
 ```
 
 Publish migrations files:
 
-```
-$ php artisan vendor:publish --tag=profile-migrations
-```
-
-Publish seed files:
-
-```
-$ php artisan vendor:publish --tag=profile-seeds
+```bash
+php artisan vendor:publish --tag=profile-migrations
 ```
 
 Then run:
 
-```
-$ php artisan migrate
+```bash
+php artisan migrate
 ```
 
-Then seed the Country and Phone Types data with:
+Then run default seeders:
 
-```
-$ php artisan profile:seed
+```bash
+php artisan profile:seed
 ```
 
 #### Configuration
@@ -56,7 +38,7 @@ You may want to define your own seeders for `profile:seed` in `config/profile.ph
 
 ### Available Polymorph Traits
 
-User Cases: 
+User Cases:
 
 1. A company has addresses, phone numbers, emails and websites.
 2. An employee has addresses, phone numbers, emails and websites.
@@ -67,20 +49,20 @@ This lead us to use Polymorph to tackle the issue of similarity in data stored.
 
 Available traits for polymorph:
 
-1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
-2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
-3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
-4. `CleaniqueCoders\Profile\Traits\Morphs\Websiteable`
-5. `CleaniqueCoders\Profile\Traits\Morphs\Bankable`
+1. `CleaniqueCoders\Profile\Concerns\Addressable`
+2. `CleaniqueCoders\Profile\Concerns\Emailable`
+3. `CleaniqueCoders\Profile\Concerns\Phoneable`
+4. `CleaniqueCoders\Profile\Concerns\Websiteable`
+5. `CleaniqueCoders\Profile\Concerns\Bankable`
 
 For most common setup for entity is to use `HasProfile` trait.
 
 `HasProfile` trait consist of:
 
-1. `CleaniqueCoders\Profile\Traits\Morphs\Addressable`
-2. `CleaniqueCoders\Profile\Traits\Morphs\Emailable`
-3. `CleaniqueCoders\Profile\Traits\Morphs\Phoneable`
-4. `CleaniqueCoders\Profile\Traits\Morphs\Websiteable`
+1. `CleaniqueCoders\Profile\Concerns\Addressable`
+2. `CleaniqueCoders\Profile\Concerns\Emailable`
+3. `CleaniqueCoders\Profile\Concerns\Phoneable`
+4. `CleaniqueCoders\Profile\Concerns\Websiteable`
 
 ```php
 
@@ -91,7 +73,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-	use HasProfile;
+ use HasProfile;
 }
 ```
 
@@ -101,16 +83,16 @@ class User extends Authenticatable
 
 ```php
 $user->addresses()->create([
-	'primary' => '9 miles, Sungei Way',
-	'secondary' => 'P.O.Box 6503, Seri Setia',
-	'city' => 'Petaling Jaya',
-	'postcode' => '46150',
-	'state' => 'Selangor',
-	'country_id' => config('profile.providers.country.model')::name('Malaysia')->first()->id
+ 'primary' => '9 miles, Sungei Way',
+ 'secondary' => 'P.O.Box 6503, Seri Setia',
+ 'city' => 'Petaling Jaya',
+ 'postcode' => '46150',
+ 'state' => 'Selangor',
+ 'country_id' => config('profile.providers.country.model')::name('Malaysia')->first()->id
 ]);
 ```
 
-```php 
+```php
 $user->phones()->create([
     'phone_number'  => '+6089259167',
     'is_default'    => true,

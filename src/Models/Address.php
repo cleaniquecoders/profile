@@ -2,26 +2,23 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Address extends Model
 {
-    protected $guarded = ['id'];
+    use InteractsWithUuid;
 
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'hashslug';
-    }
+    protected $guarded = [
+        'id',
+    ];
 
     /**
      * Get all of the owning addressable models.
      */
-    public function addressable()
+    public function addressable(): MorphTo
     {
         return $this->morphTo();
     }
@@ -29,7 +26,7 @@ class Address extends Model
     /**
      * Get Country.
      */
-    public function country()
+    public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
     }

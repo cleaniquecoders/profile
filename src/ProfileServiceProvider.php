@@ -2,60 +2,25 @@
 
 namespace CleaniqueCoders\Profile;
 
-use Illuminate\Support\ServiceProvider;
+use CleaniqueCoders\Profile\Console\Commands\SeedProfileCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class ProfileServiceProvider extends ServiceProvider
+class ProfileServiceProvider extends PackageServiceProvider
 {
-    /**
-     * Package Tag Name.
-     *
-     * @var string
-     */
-    protected $package_tag = 'profile';
-
-    /**
-     * Bootstrap the application services.
-     */
-    public function boot()
+    public function configurePackage(Package $package): void
     {
-        /*
-         * Configuration
-         */
-        $this->publishes([
-            __DIR__.'/../config/profile.php' => config_path('profile.php'),
-        ], 'profile');
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/profile.php',
-            'profile'
-        );
-
-        /*
-         * Migrations
-         */
-        $this->publishes([
-            __DIR__.'/../stubs/database/factories' => database_path('factories/'),
-        ], $this->package_tag.'-factories');
-        $this->publishes([
-            __DIR__.'/../stubs/database/migrations' => database_path('migrations/'),
-        ], $this->package_tag.'-migrations');
-        $this->publishes([
-            __DIR__.'/../database/Seeders' => database_path('seeders/'),
-        ], $this->package_tag.'-seeds');
-
-        /*
-         * Commands
-         */
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                \CleaniqueCoders\Profile\Console\Commands\SeedProfileCommand::class,
-            ]);
-        }
-    }
-
-    /**
-     * Register the application services.
-     */
-    public function register()
-    {
+        $package->name('profile')
+            ->hasConfigFile('profile')
+            ->hasCommand(SeedProfileCommand::class)
+            ->hasMigrations(
+                'create_addresses_table',
+                'create_banks_table',
+                'create_countries_table',
+                'create_emails_table',
+                'create_phone_types_table',
+                'create_phones_table',
+                'create_websites_table',
+            );
     }
 }

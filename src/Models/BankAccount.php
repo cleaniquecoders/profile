@@ -2,20 +2,23 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class BankAccount extends Model
 {
-    protected $guarded = ['id'];
+    use InteractsWithUuid;
 
-    protected $bank;
+    protected $guarded = [
+        'id',
+    ];
 
     /**
      * Bank.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function bank()
+    public function bank(): BelongsTo
     {
         return $this->belongsTo(Bank::class)->withDefault();
     }
@@ -23,17 +26,15 @@ class BankAccount extends Model
     /**
      * Get all of the owning bank models.
      */
-    public function bankable()
+    public function bankable(): MorphTo
     {
         return $this->morphTo();
     }
 
     /**
      * Get Bank Name via Accessor.
-     *
-     * @return string
      */
-    public function getBankNameAttribute()
+    public function getBankNameAttribute(): string
     {
         return $this->bank->name;
     }

@@ -1,5 +1,9 @@
 <?php
 
+use CleaniqueCoders\Profile\Database\Seeders\BankSeeder;
+use CleaniqueCoders\Profile\Database\Seeders\CountrySeeder;
+use CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder;
+
 return [
     'providers' => [
         'address' => [
@@ -30,9 +34,9 @@ return [
         ],
     ],
     'seeders' => [
-        \CleaniqueCoders\Profile\Database\Seeders\BankSeeder::class,
-        \CleaniqueCoders\Profile\Database\Seeders\CountrySeeder::class,
-        \CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder::class,
+        BankSeeder::class,
+        CountrySeeder::class,
+        PhoneTypeSeeder::class, // @todo should use enum
     ],
     'data' => [
         'phoneType' => [

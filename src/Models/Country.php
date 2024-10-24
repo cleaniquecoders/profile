@@ -2,9 +2,14 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-    protected $guarded = [];
+    use InteractsWithUuid;
+
+    protected $guarded = [
+        'id',
+    ];
 }
