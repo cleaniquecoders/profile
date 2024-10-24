@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid')->unique();
-            $table->string('code');
-            $table->label();
-            $table->name();
+            $table->string('code')->unique();
+            $table->string('label')->nullable()->comment('Label');
+            $table->string('name')->nullable()->comment('Name');
             $table->timestamps();
         });
     }

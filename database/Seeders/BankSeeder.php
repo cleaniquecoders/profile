@@ -2,7 +2,9 @@
 
 namespace CleaniqueCoders\Profile\Database\Seeders;
 
+use CleaniqueCoders\Profile\Models\Bank;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class BankSeeder extends Seeder
 {
@@ -159,7 +161,8 @@ class BankSeeder extends Seeder
         ];
 
         foreach ($banks as $bank) {
-            \CleaniqueCoders\Profile\Models\Bank::create($bank);
+            $bank['uuid'] = Str::orderedUuid();
+            Bank::create($bank);
         }
     }
 }

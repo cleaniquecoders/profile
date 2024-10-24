@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('websiteable_type');
             $table->string('name')->nullable();
             $table->string('url')->nullable();
-            $table->is('default');
-            $table->standardTime();
+            $table->boolean('is_default')->default(false);
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

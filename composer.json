@@ -1,54 +1,74 @@
 {
-	"name": "cleaniquecoders/profile",
-	"description": "Common Profile Information",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Nasrul Hazim",
-			"email": "nasrulhazim.m@gmail.com"
-		}
-	],
-	"autoload": {
-		"psr-4": {
-			"CleaniqueCoders\\Profile\\": "src/",
-			"CleaniqueCoders\\Profile\\Database\\": "database/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"CleaniqueCoders\\Profile\\Tests\\": "tests/"
-		}
-	},
-	"require": {
-		"php": "^8.1 | ^8.2 | ^8.3",
-		"illuminate/support": "^9.0 | ^10.0 | ^11.0",
-		"illuminate/auth": "^9.0 | ^10.0 | ^11.0",
-		"cleaniquecoders/blueprint-macro": "^5.0",
-		"spatie/laravel-package-tools": "^1.16",
-		"cleaniquecoders/traitify": "^1.0"
-	},
-	"require-dev": {
-		"orchestra/testbench": "7.*|8.*",
-		"pestphp/pest": "^2.0",
-		"phpstan/phpstan-phpunit": "^1.2",
-		"laravel/pint": "^1.6"
-	},
-	"extra": {
-		"laravel": {
-			"providers": [
-				"CleaniqueCoders\\Profile\\ProfileServiceProvider"
-			]
-		}
-	},
-	"config": {
-		"allow-plugins": {
-			"pestphp/pest-plugin": true
-		}
-	},
-	"scripts": {
-		"test": "vendor/bin/pest",
-		"format": "vendor/bin/pint"
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true
+    "name": "cleaniquecoders/profile",
+    "description": "Common Profile Information",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nasrul Hazim",
+            "email": "nasrulhazim.m@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CleaniqueCoders\\Profile\\": "src/",
+            "CleaniqueCoders\\Profile\\Database\\": "database/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CleaniqueCoders\\Profile\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "require": {
+        "php": "^8.1 | ^8.2 | ^8.3",
+        "illuminate/support": "^9.0 | ^10.0 | ^11.0",
+        "illuminate/auth": "^9.0 | ^10.0 | ^11.0",
+        "cleaniquecoders/blueprint-macro": "^5.0",
+        "spatie/laravel-package-tools": "^1.16",
+        "cleaniquecoders/traitify": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.5",
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan-phpunit": "^1.2",
+        "laravel/pint": "^1.6",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CleaniqueCoders\\Profile\\ProfileServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint",
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/pint --ansi",
+            "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

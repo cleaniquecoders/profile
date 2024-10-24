@@ -17,8 +17,9 @@ return new class extends Migration
             $table->unsignedInteger('emailable_id');
             $table->string('emailable_type');
             $table->string('email')->nullable();
-            $table->is('default');
-            $table->standardTime();
+            $table->boolean('is_default')->default(false);
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

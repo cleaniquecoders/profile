@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('phone_types', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid')->unique();
-            $table->label();
-            $table->name();
+            $table->string('label')->nullable()->comment('Label');
+            $table->string('name')->nullable()->comment('Name');
             $table->timestamps();
         });
     }

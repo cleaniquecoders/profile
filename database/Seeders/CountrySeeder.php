@@ -258,6 +258,7 @@ class CountrySeeder extends Seeder
 
         foreach ($countries as $code => $name) {
             \CleaniqueCoders\Profile\Models\Country::create([
+                'uuid' => Str::orderedUuid(),
                 'code' => $code,
                 'name' => $name,
                 'label' => Str::slug($name, '-'),
