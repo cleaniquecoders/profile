@@ -2,27 +2,24 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Phone extends Model
 {
-    protected $guarded = ['id'];
-
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'hashslug';
-    }
+    use InteractsWithUuid;
+    
+    protected $guarded = [
+        'id'
+    ];
 
     /**
      * Get all of the owning phoneable models.
      */
-    public function phoneable()
+    public function phoneable(): MorphTo
     {
         return $this->morphTo();
     }
@@ -32,7 +29,7 @@ class Phone extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function type()
+    public function type(): BelongsTo
     {
         return $this->belongsTo(PhoneType::class, 'phone_type_id')->withDefault();
     }
@@ -43,7 +40,7 @@ class Phone extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeHome(Builder $query)
+    public function scopeHome(Builder $query): Builder
     {
         return $query->where('phone_type_id', PhoneType::HOME);
     }
@@ -54,7 +51,7 @@ class Phone extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeMobile(Builder $query)
+    public function scopeMobile(Builder $query): Builder
     {
         return $query->where('phone_type_id', PhoneType::MOBILE);
     }
@@ -65,7 +62,7 @@ class Phone extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOffice(Builder $query)
+    public function scopeOffice(Builder $query): Builder
     {
         return $query->where('phone_type_id', PhoneType::OFFICE);
     }
@@ -76,7 +73,7 @@ class Phone extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOther(Builder $query)
+    public function scopeOther(Builder $query): Builder
     {
         return $query->where('phone_type_id', PhoneType::OTHER);
     }
@@ -87,7 +84,7 @@ class Phone extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeFax(Builder $query)
+    public function scopeFax(Builder $query): Builder
     {
         return $query->where('phone_type_id', PhoneType::FAX);
     }

@@ -1,6 +1,8 @@
 <?php
 
-namespace CleaniqueCoders\Profile\Traits\Morphs;
+namespace CleaniqueCoders\Profile\Concerns;
+
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Addressable Trait.
@@ -10,7 +12,7 @@ trait Addressable
     /**
      * Get all addresses.
      */
-    public function addresses()
+    public function addresses(): MorphMany
     {
         return $this->morphMany(
             config('profile.providers.address.model'),

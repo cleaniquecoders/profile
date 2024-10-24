@@ -2,21 +2,16 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {
-    protected $guarded = ['id'];
-
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'hashslug';
-    }
+    use InteractsWithUuid;
+    
+    protected $guarded = [
+        'id'
+    ];
 
     /**
      * Get all of the owning emailable models.

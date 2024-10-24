@@ -1,6 +1,9 @@
 <?php
 
-namespace CleaniqueCoders\Profile\Traits\Morphs;
+namespace CleaniqueCoders\Profile\Concerns;
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Bankable Trait.
@@ -10,7 +13,7 @@ trait Bankable
     /**
      * Get bank.
      */
-    public function bank()
+    public function bank(): BelongsTo
     {
         return $this->belongsTo(
             config('profile.profile.providers.bank.model')
@@ -20,7 +23,7 @@ trait Bankable
     /**
      * Get all banks.
      */
-    public function banks()
+    public function banks(): MorphMany
     {
         return $this->morphMany(
             config('profile.providers.bank.model'),

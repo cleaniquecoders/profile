@@ -1,6 +1,8 @@
 <?php
 
-namespace CleaniqueCoders\Profile\Traits\Morphs;
+namespace CleaniqueCoders\Profile\Concerns;
+
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Phoneable Trait.
@@ -10,7 +12,7 @@ trait Phoneable
     /**
      * Get all phones.
      */
-    public function phones()
+    public function phones(): MorphMany
     {
         return $this->morphMany(
             config('profile.providers.phone.model'),
