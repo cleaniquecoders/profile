@@ -12,10 +12,7 @@
 		"psr-4": {
 			"CleaniqueCoders\\Profile\\": "src/",
 			"CleaniqueCoders\\Profile\\Database\\": "database/"
-		},
-		"files": [
-			"support/helpers.php"
-		]
+		}
 	},
 	"autoload-dev": {
 		"psr-4": {
