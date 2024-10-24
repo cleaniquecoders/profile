@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89a01d54960bd54fc26b13c540a89cc1",
+    "content-hash": "97426101a777240ad2aead366034d7fb",
     "packages": [
         {
             "name": "brick/math",
@@ -193,6 +193,84 @@
                 }
             ],
             "time": "2023-02-25T00:45:37+00:00"
+        },
+        {
+            "name": "cleaniquecoders/traitify",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cleaniquecoders/traitify.git",
+                "reference": "ad449916c7c76941150c54340033587c80e3e297"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cleaniquecoders/traitify/zipball/ad449916c7c76941150c54340033587c80e3e297",
+                "reference": "ad449916c7c76941150c54340033587c80e3e297",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0||^11.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^9.5",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CleaniqueCoders\\Traitify\\TraitifyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Traitify": "CleaniqueCoders\\Traitify\\Facades\\Traitify"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CleaniqueCoders\\Traitify\\": "src/",
+                    "CleaniqueCoders\\Traitify\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nasrul Hazim Bin Mohamad",
+                    "email": "nasrulhazim.m@gmail.com",
+                    "role": "Solution Architect | Software Engineer"
+                }
+            ],
+            "description": "Traitify is a Laravel package designed to streamline and enhance your development process by providing a collection of reusable traits and contracts.",
+            "homepage": "https://github.com/cleaniquecoders/traitify",
+            "keywords": [
+                "Cleanique Coders",
+                "laravel",
+                "traitify"
+            ],
+            "support": {
+                "issues": "https://github.com/cleaniquecoders/traitify/issues",
+                "source": "https://github.com/cleaniquecoders/traitify/tree/v1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Cleanique Coders",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-16T02:52:02+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2843,6 +2921,66 @@
                 }
             ],
             "time": "2023-11-08T05:53:05+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-27T18:56:10+00:00"
         },
         {
             "name": "symfony/console",
@@ -9926,5 +10064,5 @@
         "php": "^8.1 | ^8.2 | ^8.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

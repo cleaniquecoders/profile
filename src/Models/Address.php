@@ -12,7 +12,7 @@ class Address extends Model
     use InteractsWithUuid;
 
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     /**

@@ -11,6 +11,6 @@ class Bank extends Model
     use HasProfile, InteractsWithUuid;
 
     protected $guarded = [
-        'id'
+        'id',
     ];
 }

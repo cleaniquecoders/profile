@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Phone extends Model
 {
     use InteractsWithUuid;
-    
+
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     /**
@@ -26,8 +26,6 @@ class Phone extends Model
 
     /**
      * Phone Type.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function type(): BelongsTo
     {
@@ -36,9 +34,6 @@ class Phone extends Model
 
     /**
      * Get Home Phone Numbers.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeHome(Builder $query): Builder
     {
@@ -47,9 +42,6 @@ class Phone extends Model
 
     /**
      * Get Mobile Phone Numbers.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeMobile(Builder $query): Builder
     {
@@ -58,9 +50,6 @@ class Phone extends Model
 
     /**
      * Get Office Phone Numbers.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOffice(Builder $query): Builder
     {
@@ -69,9 +58,6 @@ class Phone extends Model
 
     /**
      * Get Other Phone Numbers.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOther(Builder $query): Builder
     {
@@ -80,9 +66,6 @@ class Phone extends Model
 
     /**
      * Get Fax Phone Numbers.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeFax(Builder $query): Builder
     {

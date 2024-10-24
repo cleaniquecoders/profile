@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Email extends Model
 {
     use InteractsWithUuid;
-    
+
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     /**

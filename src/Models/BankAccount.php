@@ -12,13 +12,11 @@ class BankAccount extends Model
     use InteractsWithUuid;
 
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     /**
      * Bank.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function bank(): BelongsTo
     {
@@ -35,8 +33,6 @@ class BankAccount extends Model
 
     /**
      * Get Bank Name via Accessor.
-     *
-     * @return string
      */
     public function getBankNameAttribute(): string
     {

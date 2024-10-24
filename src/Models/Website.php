@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Website extends Model
 {
     use InteractsWithUuid;
-    
+
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     /**
