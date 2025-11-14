@@ -1,147 +1,199 @@
-## Profile
+# Profile
 
-Profile is a package to store basic information - addresses, phone numbers, emails, and websites using [Polymorph](https://laravel.com/docs/6.x/eloquent-relationships#polymorphic-relationships) approach.
+A Laravel package for managing profile information (addresses, emails, phone numbers, websites, and bank accounts) using polymorphic relationships.
 
 [![Latest Stable Version](https://poser.pugx.org/cleaniquecoders/profile/v/stable)](https://packagist.org/packages/cleaniquecoders/profile) [![Total Downloads](https://poser.pugx.org/cleaniquecoders/profile/downloads)](https://packagist.org/packages/cleaniquecoders/profile) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleaniquecoders/profile/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleaniquecoders/profile/?branch=master) [![License](https://poser.pugx.org/cleaniquecoders/profile/license)](https://packagist.org/packages/cleaniquecoders/profile)
 
-## Installation
+## Features
 
-Install Profile package by running in your terminal:
+- **Polymorphic Design** - Reusable profile tables for any model
+- **Trait-Based** - Use only what you need (addresses, emails, phones, websites, bank accounts)
+- **Type-Safe** - Query scopes for phone types and other filters
+- **Configurable** - Customize models and polymorphic type names
+- **UUID Support** - Unique identifiers for external integrations
+- **Soft Deletes** - Maintain audit trail of changes
+
+## Requirements
+
+- PHP ^8.3 | ^8.4
+- Laravel ^11.0 | ^12.0
+
+## Quick Start
+
+### Installation
 
 ```bash
 composer require cleaniquecoders/profile
-```
-
-Publish migrations files:
-
-```bash
 php artisan vendor:publish --tag=profile-migrations
-```
-
-Then run:
-
-```bash
 php artisan migrate
-```
-
-Then run default seeders:
-
-```bash
 php artisan profile:seed
 ```
 
-#### Configuration
+### Basic Usage
 
-Now you are able to configure your own models and type name. See `config/profile.php`.
-
-You may want to define your own seeders for `profile:seed` in `config/profile.php`.
-
-### Available Polymorph Traits
-
-User Cases:
-
-1. A company has addresses, phone numbers, emails and websites.
-2. An employee has addresses, phone numbers, emails and websites.
-
-This lead us to use Polymorph to tackle the issue of similarity in data stored.
-
-#### Setup
-
-Available traits for polymorph:
-
-1. `CleaniqueCoders\Profile\Concerns\Addressable`
-2. `CleaniqueCoders\Profile\Concerns\Emailable`
-3. `CleaniqueCoders\Profile\Concerns\Phoneable`
-4. `CleaniqueCoders\Profile\Concerns\Websiteable`
-5. `CleaniqueCoders\Profile\Concerns\Bankable`
-
-For most common setup for entity is to use `HasProfile` trait.
-
-`HasProfile` trait consist of:
-
-1. `CleaniqueCoders\Profile\Concerns\Addressable`
-2. `CleaniqueCoders\Profile\Concerns\Emailable`
-3. `CleaniqueCoders\Profile\Concerns\Phoneable`
-4. `CleaniqueCoders\Profile\Concerns\Websiteable`
+Add the `HasProfile` trait to your model:
 
 ```php
-
-namespace App;
-
 use CleaniqueCoders\Profile\Concerns\HasProfile;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
- use HasProfile;
+    use HasProfile;
 }
 ```
 
-#### Usage
-
-**Create a record for each profile**
+Create profile information:
 
 ```php
+use CleaniqueCoders\Profile\Models\PhoneType;
+
+// Create address
 $user->addresses()->create([
- 'primary' => '9 miles, Sungei Way',
- 'secondary' => 'P.O.Box 6503, Seri Setia',
- 'city' => 'Petaling Jaya',
- 'postcode' => '46150',
- 'state' => 'Selangor',
- 'country_id' => config('profile.providers.country.model')::name('Malaysia')->first()->id
+    'primary' => '123 Main Street',
+    'city' => 'Kuala Lumpur',
+    'postcode' => '50088',
+    'country_id' => 1,
 ]);
-```
 
-```php
+// Create phone numbers
 $user->phones()->create([
-    'phone_number'  => '+6089259167',
-    'is_default'    => true,
-    'phone_type_id' => PhoneType::HOME,
-]);
-$user->phones()->create([
-    'phone_number'  => '+60191234567',
-    'is_default'    => true,
+    'phone_number' => '+60123456789',
     'phone_type_id' => PhoneType::MOBILE,
-]);
-$user->phones()->create([
-    'phone_number'  => '+60380001000',
-    'is_default'    => true,
-    'phone_type_id' => PhoneType::OFFICE,
-]);
-$user->phones()->create([
-    'phone_number'  => '+60380001000',
-    'is_default'    => true,
-    'phone_type_id' => PhoneType::OTHER,
-]);
-$user->phones()->create([
-    'phone_number'  => '+60380001001',
-    'is_default'    => true,
-    'phone_type_id' => PhoneType::FAX,
+    'is_default' => true,
 ]);
 
-// you can futher query using local scopes in phone models.
-// get the first home phone number
-$user->phones()->home()->first();
-// get all the mobile phone numbers
-$user->phones()->mobile()->get();
+// Create email
+$user->emails()->create([
+    'email' => 'john@example.com',
+    'is_default' => true,
+]);
+
+// Create website
+$user->websites()->create([
+    'url' => 'https://example.com',
+    'is_default' => true,
+]);
 ```
+
+Query profile information:
 
 ```php
-$user->emails()->create([...]);
-$user->websites()->create([...]);
-$user->bankable()->create([...]);
+// Get all addresses
+$addresses = $user->addresses;
+
+// Get mobile phones only
+$mobilePhones = $user->phones()->mobile()->get();
+
+// Get default email
+$email = $user->emails()->where('is_default', true)->first();
 ```
 
-**Get all records**
+## Available Traits
+
+| Trait | Purpose |
+|-------|---------|
+| `HasProfile` | Includes Addressable, Emailable, Phoneable, Websiteable |
+| `Addressable` | Manage physical addresses |
+| `Emailable` | Manage email addresses |
+| `Phoneable` | Manage phone numbers (with types: home, mobile, office, fax, other) |
+| `Websiteable` | Manage website URLs |
+| `Bankable` | Manage bank account information |
+
+Use individual traits for specific needs:
 
 ```php
-$user->addresses;
-$user->emails;
-$user->phones;
-$user->websites;
-$user->banks;
+use CleaniqueCoders\Profile\Concerns\Addressable;
+use CleaniqueCoders\Profile\Concerns\Phoneable;
+
+class Company extends Model
+{
+    use Addressable, Phoneable;
+}
 ```
+
+## Documentation
+
+📚 **[Complete Documentation](docs/)** - Comprehensive guides and API reference
+
+### Quick Links
+
+- [Installation Guide](docs/01-getting-started/01-installation.md)
+- [Configuration](docs/01-getting-started/02-configuration.md)
+- [Quick Start Examples](docs/01-getting-started/03-quick-start.md)
+- [Architecture Overview](docs/02-architecture/01-overview.md)
+- [Usage Guides](docs/03-usage/)
+- [API Reference](docs/04-api-reference/)
+- [Best Practices](docs/03-usage/07-best-practices.md)
+
+## Use Cases
+
+### Corporate Profiles
+
+```php
+class Company extends Model
+{
+    use HasProfile, Bankable;
+}
+
+// Headquarters address
+$company->addresses()->create([...]);
+
+// Contact information
+$company->phones()->create(['phone_type_id' => PhoneType::OFFICE, ...]);
+$company->emails()->create(['email' => 'info@company.com', ...]);
+$company->websites()->create(['url' => 'https://company.com', ...]);
+
+// Banking details
+$company->banks()->create([...]);
+```
+
+### Employee Management
+
+```php
+class Employee extends Model
+{
+    use HasProfile, Bankable;
+}
+
+// Home address for shipping
+$employee->addresses()->create([...]);
+
+// Multiple contact numbers
+$employee->phones()->create(['phone_type_id' => PhoneType::MOBILE, ...]);
+$employee->phones()->create(['phone_type_id' => PhoneType::HOME, ...]);
+
+// Payroll bank account
+$employee->banks()->create([...]);
+```
+
+### Customer Records
+
+```php
+class Customer extends Model
+{
+    use HasProfile;
+}
+
+// Billing and shipping addresses
+$customer->addresses()->create(['type' => 'billing', ...]);
+$customer->addresses()->create(['type' => 'shipping', ...]);
+
+// Multiple contact methods
+$customer->emails()->create([...]);
+$customer->phones()->mobile()->create([...]);
+```
+
+## Testing
+
+```bash
+composer test
+```
+
+## Contributing
+
+Contributions are welcome! Please see our [contribution guidelines](CONTRIBUTING.md) for details.
 
 ## License
 
-This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+This package is open-sourced software licensed under the [MIT license](LICENSE.txt).
