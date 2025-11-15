@@ -47,9 +47,13 @@ class TestCase extends Orchestra
             __DIR__.'/../database/migrations/create_addresses_table.php.stub',
             __DIR__.'/../database/migrations/create_banks_table.php.stub',
             __DIR__.'/../database/migrations/create_countries_table.php.stub',
+            __DIR__.'/../database/migrations/create_credentials_table.php.stub',
+            __DIR__.'/../database/migrations/create_documents_table.php.stub',
             __DIR__.'/../database/migrations/create_emails_table.php.stub',
+            __DIR__.'/../database/migrations/create_emergency_contacts_table.php.stub',
             __DIR__.'/../database/migrations/create_phone_types_table.php.stub',
             __DIR__.'/../database/migrations/create_phones_table.php.stub',
+            __DIR__.'/../database/migrations/create_social_media_table.php.stub',
             __DIR__.'/../database/migrations/create_websites_table.php.stub',
         ];
 

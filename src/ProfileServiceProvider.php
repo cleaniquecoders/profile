@@ -17,9 +17,13 @@ class ProfileServiceProvider extends PackageServiceProvider
                 'create_addresses_table',
                 'create_banks_table',
                 'create_countries_table',
+                'create_credentials_table',
+                'create_documents_table',
                 'create_emails_table',
+                'create_emergency_contacts_table',
                 'create_phone_types_table',
                 'create_phones_table',
+                'create_social_media_table',
                 'create_websites_table',
             );
     }
