@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Database\Seeders;
 
+use CleaniqueCoders\Profile\Enums\PhoneType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -12,13 +13,13 @@ class PhoneTypeSeeder extends Seeder
      */
     public function run()
     {
-        $data = config('profile.data.phoneType');
+        $phoneTypes = PhoneType::cases();
 
-        foreach ($data as $datum) {
+        foreach ($phoneTypes as $phoneType) {
             \CleaniqueCoders\Profile\Models\PhoneType::create([
                 'uuid' => Str::orderedUuid(),
-                'name' => $datum,
-                'label' => Str::slug($datum, '-'),
+                'name' => $phoneType->label(),
+                'label' => $phoneType->value,
             ]);
         }
     }
