@@ -39,7 +39,7 @@ trait Socialable
     /**
      * Check if has social media account for a specific platform.
      */
-    public function hasSocialMedia(string $platform = null): bool
+    public function hasSocialMedia(?string $platform = null): bool
     {
         if ($platform) {
             return $this->socialMedia()->where('platform', $platform)->exists();

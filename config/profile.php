@@ -3,11 +3,11 @@
 use CleaniqueCoders\Profile\Database\Seeders\BankSeeder;
 use CleaniqueCoders\Profile\Database\Seeders\CountrySeeder;
 use CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder;
-use CleaniqueCoders\Profile\Enums\PhoneType;
-use CleaniqueCoders\Profile\Enums\SocialMediaPlatform;
-use CleaniqueCoders\Profile\Enums\RelationshipType;
 use CleaniqueCoders\Profile\Enums\CredentialType;
 use CleaniqueCoders\Profile\Enums\DocumentType;
+use CleaniqueCoders\Profile\Enums\PhoneType;
+use CleaniqueCoders\Profile\Enums\RelationshipType;
+use CleaniqueCoders\Profile\Enums\SocialMediaPlatform;
 
 return [
     'providers' => [

@@ -8,11 +8,11 @@ namespace CleaniqueCoders\Profile\Concerns;
 trait HasProfile
 {
     use Addressable;
-    use Emailable;
-    use Phoneable;
-    use Websiteable;
-    use Socialable;
-    use EmergencyContactable;
     use Credentialable;
     use Documentable;
+    use Emailable;
+    use EmergencyContactable;
+    use Phoneable;
+    use Socialable;
+    use Websiteable;
 }
