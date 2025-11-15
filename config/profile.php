@@ -32,6 +32,22 @@ return [
             'model' => \CleaniqueCoders\Profile\Models\Website::class,
             'type' => 'websiteable',
         ],
+        'social_media' => [
+            'model' => \CleaniqueCoders\Profile\Models\SocialMedia::class,
+            'type' => 'socialable',
+        ],
+        'emergency_contact' => [
+            'model' => \CleaniqueCoders\Profile\Models\EmergencyContact::class,
+            'type' => 'contactable',
+        ],
+        'credential' => [
+            'model' => \CleaniqueCoders\Profile\Models\Credential::class,
+            'type' => 'credentialable',
+        ],
+        'document' => [
+            'model' => \CleaniqueCoders\Profile\Models\Document::class,
+            'type' => 'documentable',
+        ],
     ],
     'seeders' => [
         BankSeeder::class,
