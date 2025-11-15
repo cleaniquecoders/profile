@@ -23,3 +23,4 @@ This section provides detailed guides on using each trait and feature of the Pro
 
 10. [Advanced Queries](06-advanced-queries.md) - Complex query examples
 11. [Best Practices](07-best-practices.md) - Tips and recommendations
+12. [Using Enums](12-using-enums.md) - Type-safe enums for profile data

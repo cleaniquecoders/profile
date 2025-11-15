@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Profile\Enums\DocumentType;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,6 +16,7 @@ class Document extends Model
     ];
 
     protected $casts = [
+        'type' => DocumentType::class,
         'is_verified' => 'boolean',
         'issued_at' => 'date',
         'expires_at' => 'date',

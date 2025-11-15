@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Profile\Enums\SocialMediaPlatform;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,6 +16,7 @@ class SocialMedia extends Model
     ];
 
     protected $casts = [
+        'platform' => SocialMediaPlatform::class,
         'is_verified' => 'boolean',
         'is_primary' => 'boolean',
     ];

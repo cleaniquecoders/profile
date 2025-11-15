@@ -3,6 +3,11 @@
 use CleaniqueCoders\Profile\Database\Seeders\BankSeeder;
 use CleaniqueCoders\Profile\Database\Seeders\CountrySeeder;
 use CleaniqueCoders\Profile\Database\Seeders\PhoneTypeSeeder;
+use CleaniqueCoders\Profile\Enums\PhoneType;
+use CleaniqueCoders\Profile\Enums\SocialMediaPlatform;
+use CleaniqueCoders\Profile\Enums\RelationshipType;
+use CleaniqueCoders\Profile\Enums\CredentialType;
+use CleaniqueCoders\Profile\Enums\DocumentType;
 
 return [
     'providers' => [
@@ -52,15 +57,13 @@ return [
     'seeders' => [
         BankSeeder::class,
         CountrySeeder::class,
-        PhoneTypeSeeder::class, // @todo should use enum
+        PhoneTypeSeeder::class,
     ],
-    'data' => [
-        'phoneType' => [
-            'Home',
-            'Mobile',
-            'Office',
-            'Other',
-            'Fax',
-        ],
+    'enums' => [
+        'phone_type' => PhoneType::class,
+        'social_media_platform' => SocialMediaPlatform::class,
+        'relationship_type' => RelationshipType::class,
+        'credential_type' => CredentialType::class,
+        'document_type' => DocumentType::class,
     ],
 ];

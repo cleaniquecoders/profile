@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Profile\Enums\RelationshipType;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,6 +16,7 @@ class EmergencyContact extends Model
     ];
 
     protected $casts = [
+        'relationship_type' => RelationshipType::class,
         'is_primary' => 'boolean',
     ];
 
