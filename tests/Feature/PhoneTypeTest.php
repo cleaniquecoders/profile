@@ -35,7 +35,7 @@ it('has common phone types in config', function () {
     expect($phoneTypes)->toHaveCount(5);
 
     $expectedTypes = ['Home', 'Mobile', 'Office', 'Other', 'Fax'];
-    $labels = array_map(fn($case) => $case->label(), $phoneTypes);
+    $labels = array_map(fn ($case) => $case->label(), $phoneTypes);
 
     foreach ($expectedTypes as $type) {
         expect($labels)->toContain($type);
