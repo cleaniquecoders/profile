@@ -9,6 +9,7 @@ The Profile package provides type-safe enums for various profile data types usin
 Located at: `CleaniqueCoders\Profile\Enums\PhoneType`
 
 **Values:**
+
 - `HOME` - Home phone number
 - `MOBILE` - Mobile/cell phone number
 - `OFFICE` - Office/work phone number
@@ -53,6 +54,7 @@ echo PhoneType::MOBILE->description(); // "Mobile/cell phone number"
 Located at: `CleaniqueCoders\Profile\Enums\SocialMediaPlatform`
 
 **Values:**
+
 - `FACEBOOK`, `TWITTER`, `INSTAGRAM`, `LINKEDIN`, `GITHUB`, `GITLAB`, `YOUTUBE`, `TIKTOK`, `PINTEREST`, `SNAPCHAT`, `REDDIT`, `TELEGRAM`, `WHATSAPP`, `DISCORD`, `SLACK`, `MEDIUM`, `BEHANCE`, `DRIBBBLE`, `STACKOVERFLOW`, `TWITCH`
 
 **Usage:**
@@ -84,6 +86,7 @@ $platforms = SocialMediaPlatform::values();
 Located at: `CleaniqueCoders\Profile\Enums\RelationshipType`
 
 **Values:**
+
 - `SPOUSE`, `PARTNER`, `PARENT`, `FATHER`, `MOTHER`, `SIBLING`, `BROTHER`, `SISTER`, `CHILD`, `SON`, `DAUGHTER`, `GRANDPARENT`, `GRANDCHILD`, `FRIEND`, `COLLEAGUE`, `NEIGHBOR`, `GUARDIAN`, `OTHER`
 
 **Usage:**
@@ -117,6 +120,7 @@ $types = RelationshipType::values();
 Located at: `CleaniqueCoders\Profile\Enums\CredentialType`
 
 **Values:**
+
 - `LICENSE` - Professional license
 - `CERTIFICATION` - Professional certification
 - `DIPLOMA` - Educational diploma
@@ -160,6 +164,7 @@ $types = CredentialType::values();
 Located at: `CleaniqueCoders\Profile\Enums\DocumentType`
 
 **Values:**
+
 - `PASSPORT` - Passport
 - `ID` - National ID Card
 - `DRIVER_LICENSE` - Driver's License
