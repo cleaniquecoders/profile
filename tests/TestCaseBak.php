@@ -11,13 +11,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Setup the test environment.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->startUp();
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         $this->cleanUp();
         parent::tearDown();
@@ -77,7 +77,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     }
 
     /** @test */
-    public function itHasConfig()
+    public function it_has_config()
     {
         $this->assertTrue(! empty(config('profile')));
         $this->assertEquals($this->getActualConfigKey(), $this->getExpectedConfigKey());
