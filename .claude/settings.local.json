@@ -3,7 +3,8 @@
     "allow": [
       "Bash(vendor/bin/pest:*)",
       "Bash(composer dump-autoload:*)",
-      "Bash(php vendor/bin/testbench:*)"
+      "Bash(php vendor/bin/testbench:*)",
+      "Bash(composer require:*)"
     ],
     "deny": [],
     "ask": []
