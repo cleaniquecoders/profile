@@ -1,5 +1,6 @@
 <?php
 
+use CleaniqueCoders\Profile\Enums\PhoneType;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -28,11 +29,16 @@ it('has five phone types', function () {
 });
 
 it('has common phone types in config', function () {
-    expect(config('profile.data.phoneType'))->not->toBeEmpty();
+    expect(config('profile.enums.phone_type'))->toBe(PhoneType::class);
+
+    $phoneTypes = PhoneType::cases();
+    expect($phoneTypes)->toHaveCount(5);
 
     $expectedTypes = ['Home', 'Mobile', 'Office', 'Other', 'Fax'];
+    $labels = array_map(fn($case) => $case->label(), $phoneTypes);
+
     foreach ($expectedTypes as $type) {
-        expect(config('profile.data.phoneType'))->toContain($type);
+        expect($labels)->toContain($type);
     }
 });
 
