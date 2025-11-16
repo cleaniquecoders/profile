@@ -16,11 +16,11 @@ it('can create a phone with all fields', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     expect($phone)->not->toBeNull()
-        ->and($phone->phone_number)->toBe('+60123456789')
+        ->and($phone->number)->toBe('+60123456789')
         ->and($phone->phone_type_id)->toBe($this->phoneType->id);
 });
 
@@ -56,20 +56,20 @@ it('can filter phones by mobile scope', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $mobileType->id,
-        'phone_number' => '+60123000000',
+        'number' => '+60123000000',
     ]);
 
     Phone::create([
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $homeType->id,
-        'phone_number' => '+60123111111',
+        'number' => '+60123111111',
     ]);
 
     $mobilePhones = Phone::mobile()->get();
 
     expect($mobilePhones)->toHaveCount(1)
-        ->and($mobilePhones->first()->phone_number)->toBe('+60123000000');
+        ->and($mobilePhones->first()->number)->toBe('+60123000000');
 });
 
 it('can access phone type name via relationship', function () {
@@ -77,7 +77,7 @@ it('can access phone type name via relationship', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     expect($phone->type->name)->toBe('Mobile');

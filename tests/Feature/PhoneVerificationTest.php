@@ -16,7 +16,7 @@ it('can generate OTP verification code for phone', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->generateVerificationCode();
@@ -32,7 +32,7 @@ it('generates valid 6-digit OTP code', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->generateVerificationCode();
@@ -45,7 +45,7 @@ it('can verify phone with correct OTP code', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->generateVerificationCode();
@@ -63,7 +63,7 @@ it('cannot verify phone with incorrect OTP code', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->generateVerificationCode();
@@ -79,7 +79,7 @@ it('cannot verify phone with expired OTP code', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->generateVerificationCode(expiresInMinutes: -1); // Expired 1 minute ago
@@ -96,7 +96,7 @@ it('can check if phone is verified', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     expect($phone->isVerified())->toBeFalse()
@@ -113,7 +113,7 @@ it('can mark phone as verified without code', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->markAsVerified();
@@ -127,7 +127,7 @@ it('can filter verified phones', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
     $verifiedPhone->markAsVerified();
 
@@ -135,7 +135,7 @@ it('can filter verified phones', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60987654321',
+        'number' => '+60987654321',
     ]);
 
     $verified = Phone::verified()->get();
@@ -152,7 +152,7 @@ it('can customize OTP expiration time', function () {
         'phoneable_id' => $this->user->id,
         'phoneable_type' => get_class($this->user),
         'phone_type_id' => $this->phoneType->id,
-        'phone_number' => '+60123456789',
+        'number' => '+60123456789',
     ]);
 
     $phone->generateVerificationCode(expiresInMinutes: 30);
