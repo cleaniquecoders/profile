@@ -4,7 +4,8 @@
       "Bash(vendor/bin/pest:*)",
       "Bash(composer dump-autoload:*)",
       "Bash(php vendor/bin/testbench:*)",
-      "Bash(composer require:*)"
+      "Bash(composer require:*)",
+      "Bash(vendor/bin/pint:*)"
     ],
     "deny": [],
     "ask": []

@@ -16,6 +16,12 @@ class Phone extends Model
         'id',
     ];
 
+    protected $casts = [
+        'verified_at' => 'datetime',
+        'verification_code_expires_at' => 'datetime',
+        'is_default' => 'boolean',
+    ];
+
     /**
      * Get all of the owning phoneable models.
      */
@@ -70,5 +76,85 @@ class Phone extends Model
     public function scopeFax(Builder $query): Builder
     {
         return $query->where('phone_type_id', PhoneType::FAX);
+    }
+
+    /**
+     * Generate a 6-digit OTP verification code for the phone.
+     *
+     * @param  int  $expiresInMinutes  Default is 10 minutes
+     */
+    public function generateVerificationCode(int $expiresInMinutes = 10): self
+    {
+        $this->verification_code = str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+        $this->verification_code_expires_at = now()->addMinutes($expiresInMinutes);
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Verify the phone using the provided OTP code.
+     */
+    public function verify(string $code): bool
+    {
+        if ($this->verification_code !== $code) {
+            return false;
+        }
+
+        if ($this->verification_code_expires_at && $this->verification_code_expires_at->isPast()) {
+            return false;
+        }
+
+        $this->verified_at = now();
+        $this->verification_code = null;
+        $this->verification_code_expires_at = null;
+        $this->save();
+
+        return true;
+    }
+
+    /**
+     * Check if the phone is verified.
+     */
+    public function isVerified(): bool
+    {
+        return ! is_null($this->verified_at);
+    }
+
+    /**
+     * Check if the phone is not verified.
+     */
+    public function isUnverified(): bool
+    {
+        return is_null($this->verified_at);
+    }
+
+    /**
+     * Mark the phone as verified without a code.
+     */
+    public function markAsVerified(): self
+    {
+        $this->verified_at = now();
+        $this->verification_code = null;
+        $this->verification_code_expires_at = null;
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Scope to get only verified phones.
+     */
+    public function scopeVerified($query)
+    {
+        return $query->whereNotNull('verified_at');
+    }
+
+    /**
+     * Scope to get only unverified phones.
+     */
+    public function scopeUnverified($query)
+    {
+        return $query->whereNull('verified_at');
     }
 }

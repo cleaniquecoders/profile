@@ -25,6 +25,9 @@ class ProfileServiceProvider extends PackageServiceProvider
                 'create_phones_table',
                 'create_social_media_table',
                 'create_websites_table',
+                'add_verification_to_emails_table',
+                'add_verification_to_phones_table',
+                'add_validation_to_addresses_table',
             );
     }
 }

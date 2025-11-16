@@ -55,6 +55,9 @@ class TestCase extends Orchestra
             __DIR__.'/../database/migrations/create_phones_table.php.stub',
             __DIR__.'/../database/migrations/create_social_media_table.php.stub',
             __DIR__.'/../database/migrations/create_websites_table.php.stub',
+            __DIR__.'/../database/migrations/add_verification_to_emails_table.php.stub',
+            __DIR__.'/../database/migrations/add_verification_to_phones_table.php.stub',
+            __DIR__.'/../database/migrations/add_validation_to_addresses_table.php.stub',
         ];
 
         foreach ($migrations as $key => $value) {
