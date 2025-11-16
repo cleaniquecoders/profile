@@ -164,6 +164,10 @@ class Phone extends Model
      */
     public function toE164(?string $countryCode = null): string
     {
+        if (empty($this->number)) {
+            return '';
+        }
+
         return PhoneFormatter::toE164($this->number, $countryCode ?? '60');
     }
 
@@ -172,6 +176,10 @@ class Phone extends Model
      */
     public function toNational(?string $countryCode = null): string
     {
+        if (empty($this->number)) {
+            return '';
+        }
+
         return PhoneFormatter::toNational($this->number, $countryCode ?? '60');
     }
 
@@ -180,6 +188,10 @@ class Phone extends Model
      */
     public function toReadable(?string $countryCode = null): string
     {
+        if (empty($this->number)) {
+            return '';
+        }
+
         return PhoneFormatter::toReadable($this->number, $countryCode ?? '60');
     }
 
@@ -188,8 +200,10 @@ class Phone extends Model
      */
     public function standardize(?string $countryCode = null): self
     {
-        $this->number = PhoneFormatter::standardize($this->number, $countryCode);
-        $this->save();
+        if (! empty($this->number)) {
+            $this->number = PhoneFormatter::standardize($this->number, $countryCode);
+            $this->save();
+        }
 
         return $this;
     }

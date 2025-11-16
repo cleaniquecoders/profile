@@ -29,8 +29,12 @@ class EncryptionManager
     /**
      * Check if a value is encrypted.
      */
-    public static function isEncrypted(string $value): bool
+    public static function isEncrypted(?string $value): bool
     {
+        if (empty($value)) {
+            return false;
+        }
+
         try {
             Crypt::decryptString($value);
 
@@ -96,7 +100,7 @@ class EncryptionManager
         $count = 0;
 
         foreach ($model->phones as $phone) {
-            if (! self::isEncrypted($phone->number)) {
+            if (! empty($phone->number) && ! self::isEncrypted($phone->number)) {
                 $phone->number = self::encrypt($phone->number);
                 $phone->saveQuietly(); // Save without triggering events
                 $count++;
@@ -118,7 +122,7 @@ class EncryptionManager
         $count = 0;
 
         foreach ($model->phones as $phone) {
-            if (self::isEncrypted($phone->number)) {
+            if (! empty($phone->number) && self::isEncrypted($phone->number)) {
                 $phone->number = self::decrypt($phone->number);
                 $phone->saveQuietly(); // Save without triggering events
                 $count++;

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('phones', function (Blueprint $table) {
-            $table->string('verification_code', 6)->nullable()->after('phone_number');
+            $table->string('verification_code', 6)->nullable()->after('number');
             $table->timestamp('verification_code_expires_at')->nullable()->after('verification_code');
             $table->timestamp('verified_at')->nullable()->after('verification_code_expires_at');
         });

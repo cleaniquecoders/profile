@@ -42,6 +42,9 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
+        // Set encryption key for testing
+        config()->set('app.key', 'base64:'.base64_encode(random_bytes(32)));
+
         // Run the migration for the event manager
         $migrations = [
             __DIR__.'/../database/migrations/create_addresses_table.php.stub',
