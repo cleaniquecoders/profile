@@ -328,6 +328,118 @@ class Address extends \CleaniqueCoders\Profile\Models\Address
 }
 ```
 
+### Address Standardization
+
+The package includes country-specific address formatters for standardizing and validating addresses:
+
+```php
+use CleaniqueCoders\Profile\Services\AddressFormatter;
+
+// Standardize postcode formats
+$formatted = AddressFormatter::standardizePostcode('12345', 'MY');  // Malaysia: 12345
+$formatted = AddressFormatter::standardizePostcode('123456789', 'US');  // USA: 12345-6789
+$formatted = AddressFormatter::standardizePostcode('SW1A1AA', 'UK');  // UK: SW1A 1AA
+
+// Validate postcode formats
+$isValid = AddressFormatter::isValidPostcode('12345', 'MY');  // true
+$isValid = AddressFormatter::isValidPostcode('1234', 'MY');  // false
+
+// Standardize address components
+$standardized = AddressFormatter::standardizeAddress([
+    'primary' => '123 main street',
+    'city' => 'kuala lumpur',
+    'state' => 'selangor',
+    'postcode' => '12345',
+    'country_code' => 'MY',
+]);
+// Returns: ['primary' => '123 Main Street', 'city' => 'Kuala Lumpur', ...]
+
+// Standardize individual fields
+$city = AddressFormatter::standardizeCity('kuala lumpur', 'MY');  // Kuala Lumpur
+$state = AddressFormatter::standardizeState('CALIFORNIA', 'US');  // California
+
+// US State abbreviations
+$abbr = AddressFormatter::getStateAbbreviation('California', 'US');  // CA
+$full = AddressFormatter::getStateFullName('CA', 'US');  // California
+```
+
+#### Using Standardization on Models
+
+The `Address` model includes a `standardize()` method that uses country-specific formatters:
+
+```php
+$address = $user->addresses()->create([
+    'primary' => '123 main street',
+    'city' => 'kuala lumpur',
+    'state' => 'selangor',
+    'postcode' => '1234',
+    'country_id' => $malaysiaCountryId,
+]);
+
+// Standardize all fields at once
+$address->standardize();
+
+// Now the address fields are properly formatted:
+// primary: "123 Main Street"
+// city: "Kuala Lumpur"
+// state: "Selangor"
+// postcode: "01234"
+```
+
+#### Supported Countries
+
+The package includes formatters for:
+
+- **Malaysia (MY)** - 5-digit postcodes
+- **United States (US)** - ZIP codes (12345 or 12345-6789), state abbreviations
+- **United Kingdom (UK)** - UK postcodes (SW1A 1AA)
+- **Singapore (SG)** - 6-digit postcodes
+- **Canada (CA)** - Postal codes (A1A 1A1)
+
+#### Custom Country Formatters
+
+Create custom formatters by extending `AbstractAddressFormatter`:
+
+```php
+use CleaniqueCoders\Profile\Services\AddressFormatters\AbstractAddressFormatter;
+
+class AustraliaAddressFormatter extends AbstractAddressFormatter
+{
+    public function getCountryCode(): string
+    {
+        return 'AU';
+    }
+
+    public function formatPostcode(string $postcode): string
+    {
+        $cleaned = $this->cleanNumeric($postcode);
+        return str_pad($cleaned, 4, '0', STR_PAD_LEFT);
+    }
+
+    public function validatePostcode(string $postcode): bool
+    {
+        return (bool) preg_match('/^\d{4}$/', trim($postcode));
+    }
+}
+```
+
+Then register it in `config/profile.php`:
+
+```php
+'address_formatters' => [
+    // ... existing formatters
+    \App\Services\AddressFormatters\AustraliaAddressFormatter::class,
+],
+```
+
+Or register at runtime:
+
+```php
+use CleaniqueCoders\Profile\Services\AddressFormatter;
+
+AddressFormatter::registerFormatter(new AustraliaAddressFormatter);
+```
+
 ## Common Use Cases
 
 ### E-commerce: Billing and Shipping

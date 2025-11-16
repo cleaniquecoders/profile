@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Profile\Services\PhoneFormatter;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -156,5 +157,40 @@ class Phone extends Model
     public function scopeUnverified($query)
     {
         return $query->whereNull('verified_at');
+    }
+
+    /**
+     * Format phone number to E.164 format.
+     */
+    public function toE164(?string $countryCode = null): string
+    {
+        return PhoneFormatter::toE164($this->number, $countryCode ?? '60');
+    }
+
+    /**
+     * Format phone number to national format.
+     */
+    public function toNational(?string $countryCode = null): string
+    {
+        return PhoneFormatter::toNational($this->number, $countryCode ?? '60');
+    }
+
+    /**
+     * Format phone number to readable format.
+     */
+    public function toReadable(?string $countryCode = null): string
+    {
+        return PhoneFormatter::toReadable($this->number, $countryCode ?? '60');
+    }
+
+    /**
+     * Standardize the phone number and save it.
+     */
+    public function standardize(?string $countryCode = null): self
+    {
+        $this->number = PhoneFormatter::standardize($this->number, $countryCode);
+        $this->save();
+
+        return $this;
     }
 }

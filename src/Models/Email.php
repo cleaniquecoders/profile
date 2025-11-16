@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Profile\Services\EmailNormalizer;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -106,5 +107,64 @@ class Email extends Model
     public function scopeUnverified($query)
     {
         return $query->whereNull('verified_at');
+    }
+
+    /**
+     * Normalize the email address.
+     */
+    public function normalize(bool $removeDots = false, bool $removePlusAddressing = false): string
+    {
+        return EmailNormalizer::normalize($this->email, $removeDots, $removePlusAddressing);
+    }
+
+    /**
+     * Get the canonical form of the email.
+     */
+    public function getCanonical(): string
+    {
+        return EmailNormalizer::canonical($this->email);
+    }
+
+    /**
+     * Get the email domain.
+     */
+    public function getDomain(): ?string
+    {
+        return EmailNormalizer::getDomain($this->email);
+    }
+
+    /**
+     * Get the email provider.
+     */
+    public function getProvider(): ?string
+    {
+        return EmailNormalizer::getProvider($this->email);
+    }
+
+    /**
+     * Check if the email is from a business domain.
+     */
+    public function isBusinessEmail(): bool
+    {
+        return EmailNormalizer::isBusinessEmail($this->email);
+    }
+
+    /**
+     * Check if the email is from a disposable email service.
+     */
+    public function isDisposable(): bool
+    {
+        return EmailNormalizer::isDisposable($this->email);
+    }
+
+    /**
+     * Standardize the email and save it.
+     */
+    public function standardize(): self
+    {
+        $this->email = EmailNormalizer::normalize($this->email);
+        $this->save();
+
+        return $this;
     }
 }

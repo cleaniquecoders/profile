@@ -8,8 +8,30 @@ use CleaniqueCoders\Profile\Enums\DocumentType;
 use CleaniqueCoders\Profile\Enums\PhoneType;
 use CleaniqueCoders\Profile\Enums\RelationshipType;
 use CleaniqueCoders\Profile\Enums\SocialMediaPlatform;
+use CleaniqueCoders\Profile\Services\AddressFormatters\CanadaAddressFormatter;
+use CleaniqueCoders\Profile\Services\AddressFormatters\MalaysiaAddressFormatter;
+use CleaniqueCoders\Profile\Services\AddressFormatters\SingaporeAddressFormatter;
+use CleaniqueCoders\Profile\Services\AddressFormatters\UnitedKingdomAddressFormatter;
+use CleaniqueCoders\Profile\Services\AddressFormatters\UnitedStatesAddressFormatter;
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Address Formatters
+    |--------------------------------------------------------------------------
+    |
+    | Register country-specific address formatters for standardizing and
+    | validating addresses based on country-specific rules and formats.
+    |
+    */
+    'address_formatters' => [
+        MalaysiaAddressFormatter::class,
+        UnitedStatesAddressFormatter::class,
+        UnitedKingdomAddressFormatter::class,
+        SingaporeAddressFormatter::class,
+        CanadaAddressFormatter::class,
+    ],
+
     'providers' => [
         'address' => [
             'model' => \CleaniqueCoders\Profile\Models\Address::class,

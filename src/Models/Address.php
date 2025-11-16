@@ -2,6 +2,7 @@
 
 namespace CleaniqueCoders\Profile\Models;
 
+use CleaniqueCoders\Profile\Services\AddressFormatter;
 use CleaniqueCoders\Traitify\Concerns\InteractsWithUuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -200,5 +201,51 @@ class Address extends Model
     public function scopeWithCoordinates($query)
     {
         return $query->whereNotNull('latitude')->whereNotNull('longitude');
+    }
+
+    /**
+     * Standardize the address and save it.
+     */
+    public function standardize(): self
+    {
+        $countryCode = $this->country?->code ?? 'MY';
+
+        if ($this->primary) {
+            $this->primary = AddressFormatter::standardizeAddressLine($this->primary, $countryCode);
+        }
+
+        if ($this->secondary) {
+            $this->secondary = AddressFormatter::standardizeAddressLine($this->secondary, $countryCode);
+        }
+
+        if ($this->city) {
+            $this->city = AddressFormatter::standardizeCity($this->city, $countryCode);
+        }
+
+        if ($this->state) {
+            $this->state = AddressFormatter::standardizeState($this->state, $countryCode);
+        }
+
+        if ($this->postcode) {
+            $this->postcode = AddressFormatter::standardizePostcode($this->postcode, $countryCode);
+        }
+
+        $this->save();
+
+        return $this;
+    }
+
+    /**
+     * Get formatted postcode.
+     */
+    public function getFormattedPostcode(): string
+    {
+        if (! $this->postcode) {
+            return '';
+        }
+
+        $countryCode = $this->country?->code ?? 'MY';
+
+        return AddressFormatter::standardizePostcode($this->postcode, $countryCode);
     }
 }
