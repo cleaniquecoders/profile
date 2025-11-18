@@ -261,3 +261,93 @@ it('user can check if has credential of specific type', function () {
     expect($this->user->hasCredential(CredentialType::LICENSE->value))->toBeTrue()
         ->and($this->user->hasCredential(CredentialType::DEGREE->value))->toBeFalse();
 });
+
+it('credential type has category method', function () {
+    expect(CredentialType::DEGREE->category())->toBe('education')
+        ->and(CredentialType::DIPLOMA->category())->toBe('education')
+        ->and(CredentialType::AWARD->category())->toBe('recognition')
+        ->and(CredentialType::MEMBERSHIP->category())->toBe('association')
+        ->and(CredentialType::LICENSE->category())->toBe('regulatory')
+        ->and(CredentialType::CERTIFICATION->category())->toBe('regulatory')
+        ->and(CredentialType::PERMIT->category())->toBe('regulatory')
+        ->and(CredentialType::ACCREDITATION->category())->toBe('regulatory')
+        ->and(CredentialType::REGISTRATION->category())->toBe('regulatory');
+});
+
+it('credential model has category accessor', function () {
+    $credential = Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::DEGREE,
+        'title' => 'Bachelor of Science',
+    ]);
+
+    expect($credential->getCategory())->toBe('education');
+
+    $license = Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::LICENSE,
+        'title' => 'Professional License',
+    ]);
+
+    expect($license->getCategory())->toBe('regulatory');
+});
+
+it('can filter credentials by category scope', function () {
+    // Create education credentials
+    Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::DEGREE,
+        'title' => 'Bachelor Degree',
+    ]);
+
+    Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::DIPLOMA,
+        'title' => 'Diploma',
+    ]);
+
+    // Create regulatory credentials
+    Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::LICENSE,
+        'title' => 'License',
+    ]);
+
+    Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::CERTIFICATION,
+        'title' => 'Certification',
+    ]);
+
+    // Create recognition credential
+    Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::AWARD,
+        'title' => 'Award',
+    ]);
+
+    // Create association credential
+    Credential::create([
+        'credentialable_id' => $this->user->id,
+        'credentialable_type' => get_class($this->user),
+        'type' => CredentialType::MEMBERSHIP,
+        'title' => 'Membership',
+    ]);
+
+    $educationCredentials = Credential::category('education')->get();
+    $regulatoryCredentials = Credential::category('regulatory')->get();
+    $recognitionCredentials = Credential::category('recognition')->get();
+    $associationCredentials = Credential::category('association')->get();
+
+    expect($educationCredentials)->toHaveCount(2)
+        ->and($regulatoryCredentials)->toHaveCount(2)
+        ->and($recognitionCredentials)->toHaveCount(1)
+        ->and($associationCredentials)->toHaveCount(1);
+});

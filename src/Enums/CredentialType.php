@@ -68,4 +68,19 @@ enum CredentialType: string
             self::MEMBERSHIP,
         ]);
     }
+
+    /**
+     * Get the category for the credential type.
+     *
+     * @return string One of: 'education', 'recognition', 'association', 'regulatory'
+     */
+    public function category(): string
+    {
+        return match ($this) {
+            self::DEGREE, self::DIPLOMA => 'education',
+            self::AWARD => 'recognition',
+            self::MEMBERSHIP => 'association',
+            self::LICENSE, self::CERTIFICATION, self::PERMIT, self::ACCREDITATION, self::REGISTRATION => 'regulatory',
+        };
+    }
 }

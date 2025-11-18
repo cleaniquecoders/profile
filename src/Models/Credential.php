@@ -65,4 +65,29 @@ class Credential extends Model
         return $query->whereNotNull('expires_at')
             ->where('expires_at', '<=', now());
     }
+
+    /**
+     * Scope a query to filter by credential category.
+     *
+     * @param  string  $category  One of: 'education', 'recognition', 'association', 'regulatory'
+     */
+    public function scopeCategory($query, string $category)
+    {
+        $types = collect(CredentialType::cases())
+            ->filter(fn ($type) => $type->category() === $category)
+            ->map(fn ($type) => $type->value)
+            ->toArray();
+
+        return $query->whereIn('type', $types);
+    }
+
+    /**
+     * Get the category for this credential.
+     *
+     * @return string One of: 'education', 'recognition', 'association', 'regulatory'
+     */
+    public function getCategory(): string
+    {
+        return $this->type->category();
+    }
 }
