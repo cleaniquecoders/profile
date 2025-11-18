@@ -285,6 +285,151 @@ $bank = $account->bank;
 
 ---
 
+## Credential
+
+**Namespace**: `CleaniqueCoders\Profile\Models\Credential`
+
+**Table**: `credentials`
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `id` | int | Primary key |
+| `uuid` | string | Unique identifier |
+| `credentialable_type` | string | Polymorphic type |
+| `credentialable_id` | int | Polymorphic ID |
+| `type` | string | Credential type (enum) |
+| `title` | string | Credential title |
+| `issuer` | string\|null | Issuing organization |
+| `number` | string\|null | Credential number |
+| `issued_at` | date\|null | Issue date |
+| `expires_at` | date\|null | Expiration date |
+| `is_verified` | bool | Verification status |
+| `notes` | text\|null | Additional notes |
+| `created_at` | timestamp | Creation time |
+| `updated_at` | timestamp | Last update time |
+| `deleted_at` | timestamp\|null | Soft delete time |
+
+### Relationships
+
+```php
+// Get owning entity
+$credential->credentialable(); // MorphTo
+```
+
+### Methods
+
+```php
+// Get credential category
+$category = $credential->getCategory();
+// Returns: 'education', 'regulatory', 'association', or 'recognition'
+```
+
+### Scopes
+
+```php
+// Filter verified credentials
+Credential::verified()->get();
+
+// Filter by type
+Credential::type('license')->get();
+
+// Filter by category
+Credential::category('regulatory')->get();
+
+// Filter active (non-expired) credentials
+Credential::active()->get();
+
+// Filter expired credentials
+Credential::expired()->get();
+```
+
+### Usage
+
+```php
+use CleaniqueCoders\Profile\Models\Credential;
+
+$credential = Credential::find(1);
+$owner = $credential->credentialable;
+$category = $credential->getCategory(); // 'education', 'regulatory', etc.
+
+// Get active regulatory credentials
+$activeRegulatory = Credential::category('regulatory')
+    ->active()
+    ->verified()
+    ->get();
+```
+
+---
+
+## Document
+
+**Namespace**: `CleaniqueCoders\Profile\Models\Document`
+
+**Table**: `documents`
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `id` | int | Primary key |
+| `uuid` | string | Unique identifier |
+| `documentable_type` | string | Polymorphic type |
+| `documentable_id` | int | Polymorphic ID |
+| `type` | string | Document type (enum) |
+| `title` | string | Document title |
+| `file_path` | string\|null | File storage path |
+| `file_type` | string\|null | File extension/type |
+| `file_size` | int\|null | File size in bytes |
+| `issued_at` | date\|null | Issue date |
+| `expires_at` | date\|null | Expiration date |
+| `is_verified` | bool | Verification status |
+| `notes` | text\|null | Additional notes |
+| `created_at` | timestamp | Creation time |
+| `updated_at` | timestamp | Last update time |
+| `deleted_at` | timestamp\|null | Soft delete time |
+
+### Relationships
+
+```php
+// Get owning entity
+$document->documentable(); // MorphTo
+```
+
+### Scopes
+
+```php
+// Filter verified documents
+Document::verified()->get();
+
+// Filter by type
+Document::type('passport')->get();
+
+// Filter active (non-expired) documents
+Document::active()->get();
+
+// Filter expired documents
+Document::expired()->get();
+```
+
+### Usage
+
+```php
+use CleaniqueCoders\Profile\Models\Document;
+
+$document = Document::find(1);
+$owner = $document->documentable;
+
+// Get active identity documents
+$activeIds = Document::type('passport')
+    ->active()
+    ->verified()
+    ->get();
+```
+
+---
+
 ## Country
 
 **Namespace**: `CleaniqueCoders\Profile\Models\Country`
@@ -323,4 +468,6 @@ $country = Country::where('name', 'Malaysia')->first();
 | Website | websites | ✅ | ✅ | ✅ |
 | Bank | banks | ❌ | ❌ | ❌ |
 | BankAccount | bank_accounts | ✅ | ✅ | ✅ |
+| Credential | credentials | ✅ | ✅ | ✅ |
+| Document | documents | ✅ | ✅ | ✅ |
 | Country | countries | ❌ | ❌ | ❌ |

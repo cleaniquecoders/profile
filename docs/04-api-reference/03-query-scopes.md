@@ -205,6 +205,131 @@ $socialMedia = $company->websites()->socialMedia()->get();
 $corporateWebsites = $company->websites()->corporate()->get();
 ```
 
+## Credential Scopes
+
+The `Credential` model provides scopes for filtering professional credentials.
+
+### `verified()`
+
+Filter verified credentials.
+
+**Usage**:
+
+```php
+use CleaniqueCoders\Profile\Models\Credential;
+
+// Get all verified credentials
+$verifiedCredentials = Credential::verified()->get();
+
+// Get user's verified credentials
+$userVerified = $user->credentials()->verified()->get();
+```
+
+### `type(string $type)`
+
+Filter credentials by specific type.
+
+**Usage**:
+
+```php
+// Get all licenses
+$licenses = $user->credentials()->type('license')->get();
+
+// Get all certifications
+$certifications = $user->credentials()->type('certification')->get();
+
+// Get academic degrees
+$degrees = $user->credentials()->type('degree')->get();
+```
+
+**Available Types**: `license`, `certification`, `diploma`, `degree`, `permit`, `accreditation`, `registration`, `membership`, `award`
+
+### `category(string $category)`
+
+Filter credentials by semantic category.
+
+**Usage**:
+
+```php
+// Get all educational credentials (degrees, diplomas)
+$education = $user->credentials()->category('education')->get();
+
+// Get regulatory credentials (licenses, certifications, permits, etc.)
+$regulatory = $user->credentials()->category('regulatory')->get();
+
+// Get professional memberships
+$memberships = $user->credentials()->category('association')->get();
+
+// Get awards and recognition
+$awards = $user->credentials()->category('recognition')->get();
+```
+
+**Available Categories**:
+
+- `education` - Degrees and diplomas
+- `regulatory` - Licenses, certifications, permits, accreditations, registrations
+- `association` - Professional memberships
+- `recognition` - Awards and honors
+
+### `active()`
+
+Filter active (non-expired) credentials.
+
+**Usage**:
+
+```php
+// Get all active credentials
+$active = $user->credentials()->active()->get();
+
+// Get active regulatory credentials
+$activeRegulatory = $user->credentials()
+    ->category('regulatory')
+    ->active()
+    ->get();
+```
+
+### `expired()`
+
+Filter expired credentials.
+
+**Usage**:
+
+```php
+// Get expired credentials
+$expired = $user->credentials()->expired()->get();
+
+// Get expired licenses
+$expiredLicenses = $user->credentials()
+    ->type('license')
+    ->expired()
+    ->get();
+```
+
+### Credential Scope Chaining
+
+```php
+// Get verified, active regulatory credentials
+$activeRegulatory = $user->credentials()
+    ->category('regulatory')
+    ->active()
+    ->verified()
+    ->get();
+
+// Get expiring licenses (within 90 days)
+$expiringLicenses = $user->credentials()
+    ->type('license')
+    ->whereNotNull('expires_at')
+    ->where('expires_at', '<=', Carbon::now()->addDays(90))
+    ->where('expires_at', '>', Carbon::now())
+    ->get();
+
+// Get unverified educational credentials
+$unverifiedEducation = $user->credentials()
+    ->category('education')
+    ->where('is_verified', false)
+    ->get();
+```
+
 ## Scope Summary
 
 | Model | Scope | Description |
@@ -214,6 +339,15 @@ $corporateWebsites = $company->websites()->corporate()->get();
 | Phone | `office()` | Filter office phones |
 | Phone | `other()` | Filter other type phones |
 | Phone | `fax()` | Filter fax numbers |
+| Credential | `verified()` | Filter verified credentials |
+| Credential | `type(string $type)` | Filter by credential type |
+| Credential | `category(string $category)` | Filter by credential category |
+| Credential | `active()` | Filter active (non-expired) credentials |
+| Credential | `expired()` | Filter expired credentials |
+| Document | `verified()` | Filter verified documents |
+| Document | `type(string $type)` | Filter by document type |
+| Document | `active()` | Filter active (non-expired) documents |
+| Document | `expired()` | Filter expired documents |
 
 ## Best Practices
 

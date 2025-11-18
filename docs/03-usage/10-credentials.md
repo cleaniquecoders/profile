@@ -174,6 +174,19 @@ $activeLicenses = $user->credentials()
     ->active()
     ->verified()
     ->get();
+
+// Filter by category for broader grouping
+$activeRegulatoryCredentials = $user->credentials()
+    ->category('regulatory')
+    ->active()
+    ->verified()
+    ->get();
+
+// Get expired educational credentials
+$expiredEducation = $user->credentials()
+    ->category('education')
+    ->expired()
+    ->get();
 ```
 
 ## Deleting Credentials
@@ -195,17 +208,108 @@ $credential->forceDelete();
 
 Common credential types include:
 
-| Type | Description | Typical Expiration |
-|------|-------------|-------------------|
-| `license` | Professional license | Yes |
-| `certification` | Professional certification | Yes |
-| `diploma` | Educational diploma | No |
-| `degree` | Academic degree | No |
-| `permit` | Work or professional permit | Yes |
-| `accreditation` | Professional accreditation | Yes |
-| `registration` | Professional registration | Yes |
-| `membership` | Professional membership | Yes |
-| `award` | Professional award or recognition | No |
+| Type | Description | Category | Typical Expiration |
+|------|-------------|----------|-------------------|
+| `license` | Professional license | Regulatory | Yes |
+| `certification` | Professional certification | Regulatory | Yes |
+| `diploma` | Educational diploma | Education | No |
+| `degree` | Academic degree | Education | No |
+| `permit` | Work or professional permit | Regulatory | Yes |
+| `accreditation` | Professional accreditation | Regulatory | Yes |
+| `registration` | Professional registration | Regulatory | Yes |
+| `membership` | Professional membership | Association | Yes |
+| `award` | Professional award or recognition | Recognition | No |
+
+## Credential Categories
+
+Credentials are organized into four semantic categories for easier management and filtering:
+
+### Education
+
+Academic qualifications and diplomas:
+
+- `degree` - Bachelor's, Master's, PhD, etc.
+- `diploma` - Professional diplomas and certificates
+
+### Regulatory
+
+Compliance and legally-required credentials:
+
+- `license` - Professional licenses (medical, legal, etc.)
+- `certification` - Industry certifications
+- `permit` - Work permits and authorizations
+- `accreditation` - Institutional accreditations
+- `registration` - Professional registrations
+
+### Association
+
+Professional memberships:
+
+- `membership` - Professional organization memberships
+
+### Recognition
+
+Awards and honors:
+
+- `award` - Professional awards and recognition
+
+### Filtering by Category
+
+```php
+// Get all educational credentials
+$education = $user->credentials()->category('education')->get();
+
+// Get regulatory credentials
+$regulatory = $user->credentials()->category('regulatory')->get();
+
+// Get professional memberships
+$memberships = $user->credentials()->category('association')->get();
+
+// Get awards and recognition
+$awards = $user->credentials()->category('recognition')->get();
+```
+
+### Combining Category with Other Scopes
+
+```php
+// Get active regulatory credentials
+$activeRegulatory = $user->credentials()
+    ->category('regulatory')
+    ->active()
+    ->verified()
+    ->get();
+
+// Get expiring regulatory credentials (within 90 days)
+$expiringRegulatory = $user->credentials()
+    ->category('regulatory')
+    ->whereNotNull('expires_at')
+    ->where('expires_at', '<=', Carbon::now()->addDays(90))
+    ->where('expires_at', '>', Carbon::now())
+    ->get();
+```
+
+### Getting a Credential's Category
+
+```php
+$credential = $user->credentials()->first();
+
+// Get the category
+$category = $credential->getCategory();
+// Returns: 'education', 'regulatory', 'association', or 'recognition'
+
+// Display credentials grouped by category
+$groupedCredentials = $user->credentials->groupBy(function ($credential) {
+    return $credential->getCategory();
+});
+
+foreach ($groupedCredentials as $category => $credentials) {
+    echo ucfirst($category) . " Credentials:\n";
+    foreach ($credentials as $credential) {
+        echo "  - {$credential->title}\n";
+    }
+    echo "\n";
+}
+```
 
 ## Complete Example
 
@@ -275,6 +379,34 @@ if ($expiringCredentials->count() > 0) {
 // Get all licenses
 $licenses = $doctor->getCredentialsByType('license');
 echo "\nTotal licenses: {$licenses->count()}\n";
+
+// Group credentials by category
+echo "\n--- Credentials by Category ---\n\n";
+$grouped = $doctor->credentials->groupBy(function ($credential) {
+    return $credential->getCategory();
+});
+
+foreach ($grouped as $category => $credentials) {
+    echo ucfirst($category) . " ({$credentials->count()}):\n";
+    foreach ($credentials as $credential) {
+        echo "  • {$credential->title}\n";
+    }
+    echo "\n";
+}
+
+// Get only regulatory credentials that need renewal
+$regulatoryForRenewal = $doctor->credentials()
+    ->category('regulatory')
+    ->whereNotNull('expires_at')
+    ->where('expires_at', '<=', Carbon::now()->addMonths(6))
+    ->get();
+
+if ($regulatoryForRenewal->count() > 0) {
+    echo "📋 Regulatory credentials requiring renewal:\n";
+    foreach ($regulatoryForRenewal as $credential) {
+        echo "- {$credential->title} (Expires: {$credential->expires_at->format('M Y')})\n";
+    }
+}
 ```
 
 ## Best Practices

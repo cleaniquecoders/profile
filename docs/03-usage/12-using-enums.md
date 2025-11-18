@@ -152,11 +152,38 @@ if (CredentialType::LICENSE->typicallyExpires()) {
     // This credential type typically has an expiration date
 }
 
+// Get category
+echo CredentialType::LICENSE->category(); // "regulatory"
+echo CredentialType::DEGREE->category(); // "education"
+echo CredentialType::MEMBERSHIP->category(); // "association"
+echo CredentialType::AWARD->category(); // "recognition"
+
 // Get label
 echo CredentialType::LICENSE->label(); // "License"
 
 // Get all credential types
 $types = CredentialType::values();
+```
+
+**Categories:**
+
+Credential types are organized into semantic categories:
+
+- **education**: `DEGREE`, `DIPLOMA`
+- **regulatory**: `LICENSE`, `CERTIFICATION`, `PERMIT`, `ACCREDITATION`, `REGISTRATION`
+- **association**: `MEMBERSHIP`
+- **recognition**: `AWARD`
+
+```php
+// Filter credentials by category
+$educationCredentials = $user->credentials()
+    ->category('education')
+    ->get();
+
+$regulatoryCredentials = $user->credentials()
+    ->category('regulatory')
+    ->active()
+    ->get();
 ```
 
 ### DocumentType

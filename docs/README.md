@@ -38,7 +38,7 @@ Detailed guides on using each feature of the package.
 
 - **[Working with Social Media](03-usage/08-social-media.md)** - Manage social media profiles (LinkedIn, GitHub, Twitter, etc.)
 - **[Working with Emergency Contacts](03-usage/09-emergency-contacts.md)** - Store emergency contact information with relationships
-- **[Working with Professional Credentials](03-usage/10-credentials.md)** - Manage licenses, certifications, and professional qualifications
+- **[Working with Professional Credentials](03-usage/10-credentials.md)** - Manage licenses, certifications, and professional qualifications with category-based filtering
 - **[Working with Documents](03-usage/11-documents.md)** - Store and manage document attachments (passports, IDs, certificates)
 
 #### Advanced Topics
@@ -119,7 +119,7 @@ Profile is a Laravel package that provides a reusable solution for managing comm
 
 - **Social Media** - Platform accounts with verification status (LinkedIn, GitHub, Twitter, etc.)
 - **Emergency Contacts** - Name, relationship, phone, email with priority flag
-- **Credentials** - Licenses, certifications, diplomas with expiration tracking
+- **Credentials** - Licenses, certifications, diplomas with expiration tracking and category-based organization (education, regulatory, association, recognition)
 - **Documents** - File attachments with metadata and expiration tracking
 
 #### Reference Data
